@@ -38,4 +38,22 @@ class Model extends CI_Model {
             $this->load->view('theme/header', $data);
         }
     }
+
+    public function select_blog()
+    {
+        $this->db->select('*');
+        $this->db->from('blog');
+        $this->db->order_by("id", "desc");
+        $query = $this->db->get();
+        
+        if ($query->num_rows() > 0) {
+            $blog = array();
+            foreach ($query->result_array() as $row) {
+                $blog[] = $row;
+            }
+            
+            $data['blogs'] = $blog;
+            $this->load->view('theme/header', $data);
+        }
+    }
 }

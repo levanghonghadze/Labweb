@@ -18,9 +18,14 @@ html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address
     src: url(../fonts/bpg_quadrosquare_mtavruli_2009.ttf);
 }
 
+body {
+    background: #F2F2F2;
+}
+
 .top_nav {
-    width: 100%;
-    background: #394051;
+    width: auto;
+    background: #fff;
+    border-bottom: 1px solid #F9F9F9;
     overflow: hidden;
 }
 
@@ -28,11 +33,119 @@ html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address
     float: left;
     display: block;
     padding: 15px;
-    color: #fff;
+    color: #6D6D6D;
     font: 15px 'bpg_quadrosquare_mtavruli_2009';
 }
 
-.addnews {
-    width: 1000px;
+.wrapper {
+    max-width: 1600px;
     margin: auto;
+}
+
+.event_form {
+    float: left;
+    overflow: hidden;
+    text-align: center;
+    margin: 2% 0 0 2%;
+    border-radius: 10px;
+    background: #F7F7F7;
+    width: 30.5%;
+}
+
+.event_img {
+    width: 100%;
+    height: 20vh;
+    overflow: hidden;
+}
+
+.event_form h1 {
+    color: #fff;
+    font: bold 3.0vh 'arial';
+    padding: 3%;
+    height: 11vh;
+}
+
+.event_location {
+    font: 20px 'arial';
+    padding-top: 10px;
+    color: #666666;
+}
+
+.event_date {
+    color: #A5A5A5;
+    font: 13px 'arial';
+    padding: 10px 0;
+}
+
+.get_event {
+    font: 13px 'arial';
+    padding: 10px;
+    border: 2px solid #fff;
+    display: inline-block;
+    color: #fff;
+}
+
+.get_event:hover {
+    background: rgba(255, 255, 255, 0.2);;
+}
+
+.mentors_form {
+    float: left;
+    overflow: hidden;
+    text-align: center;
+    margin: 2% 0 0 2%;
+    border-radius: 10px;
+    background: #F7F7F7;
+    width: 20%;
+    height: 40vh;
+    position: relative;
+}
+
+.mentors_form h1 {
+    font: 20px 'arial';
+    color: #fff;
+    z-index: 100;
+    padding-top: 20px;
+    position: absolute;
+    right: 0;
+    left: 0;
+}
+
+.mentors_info {
+    position: absolute;
+    bottom: 0px;
+    right:0;
+    left: 0;
+    color: #fff;
+    font: 14px 'arial';
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(140,19,181,0) -1%,rgba(140,19,181,0.2) 0%,rgba(140,19,181,0.4) 1%,rgba(140,19,181,0.4) 100%);
+}
+
+.mentors_info span {
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    left: 0;
+}
+
+.mentors_info:hover {
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) -1%,rgba(0,0,0,0) 0%,rgba(140,19,181,0.65) 100%);
+}
+
+.show_event h1 {
+    color: #fff;
+    font: bold 3.0vh 'arial';
+    padding: 3%;
+    text-align: center;
+}
+
+.event_overview {
+    font: 15px 'arial';
+    padding: 10px 0;
+}
+
+.blog_img {
+    width: 100%;
+    height: 20vh;
 }
