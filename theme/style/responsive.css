@@ -1,0 +1,25 @@
+@media screen and (max-width: 768px) {
+	.page { width: 100%; }
+	.phone,.fax { float: none; margin: 20px 40px 20px 40px; }
+	.team_img {display: block;}
+	#page_slides {display: none;}
+	.teamtext, #teamtext {
+		position: static;
+		width: 100%;
+		padding-top: 70px;
+	}
+	.teamtext h1, #teamtext h1
+	{
+		padding: 20px;
+		position: static;
+		margin: 20px 0 0 20px;
+	}
+	#slideout {
+		display: none;
+	}
+	.teamphoto {
+		display: block;
+		width: 90%;
+		margin: 0 20px;
+	}
+}

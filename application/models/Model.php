@@ -3,57 +3,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Model extends CI_Model {
 
-    public function select_events()
-    {
-        $this->db->select('*');
-        $this->db->from('events');
-        $this->db->order_by("id", "desc");
-        $query = $this->db->get();
-        
-        if ($query->num_rows() > 0) {
-            $event = array();
-            foreach ($query->result_array() as $row) {
-                $event[] = $row;
-            }
-            
-            $data['events'] = $event;
-            $this->load->view('theme/header', $data);
-        }
-    }
+	public function insert_page(){
 
-    public function select_mentors()
-    {
-        $this->db->select('*');
-        $this->db->from('mentors');
-        $this->db->order_by("id", "desc");
-        $query = $this->db->get();
-        
-        if ($query->num_rows() > 0) {
-            $mentor = array();
-            foreach ($query->result_array() as $row) {
-                $mentor[] = $row;
-            }
-            
-            $data['mentors'] = $mentor;
-            $this->load->view('theme/header', $data);
-        }
-    }
+		$page_title = $this->input->POST('page_title');
+		$page_url = $this->input->POST('page_url');
+		$page_text = $this->input->POST('page_text');
+		$image = $this->input->POST('image');
 
-    public function select_blog()
-    {
-        $this->db->select('*');
-        $this->db->from('blog');
-        $this->db->order_by("id", "desc");
-        $query = $this->db->get();
-        
-        if ($query->num_rows() > 0) {
-            $blog = array();
-            foreach ($query->result_array() as $row) {
-                $blog[] = $row;
-            }
-            
-            $data['blogs'] = $blog;
-            $this->load->view('theme/header', $data);
-        }
-    }
+		$this->db->set('page_title', $page_title);
+		$this->db->set('page_url', $page_url);
+		$this->db->set('page_text', $page_text);
+		$this->db->insert('pages');
+	}
+
+	public function insert_blog(){
+
+		$title = $this->input->POST('title');
+		$stext = $this->input->POST('stext');
+		$ftext = $this->input->POST('ftext');
+
+		$this->db->set('title', $title);
+		$this->db->set('stext', $stext);
+		$this->db->set('ftext', $ftext);
+		$this->db->insert('news');
+	}
+
 }

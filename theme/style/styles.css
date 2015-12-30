@@ -1,0 +1,556 @@
+﻿html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video,a {
+    background: transparent;
+    border: 0;
+    font-weight: 400;
+    font-size: 100%;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    vertical-align: baseline;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+@font-face {
+    font-family: "quad";
+    font-style: normal;
+    font-weight: 400;
+    src: url(../font/bpg_quadrosquare_caps_2013.ttf);
+}
+
+@font-face {
+    font-family: "bpg";
+    font-style: normal;
+    font-weight: 400;
+    src: url(../font/bpg_arial_2009.ttf);
+}
+
+@font-face {
+    font-family: "lari";
+    font-style: normal;
+    font-weight: 400;
+    src: url(../font/lari.ttf);
+}
+
+body {
+    background: #fff;
+    overflow-x: hidden;
+}
+
+a {
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+body::-webkit-scrollbar {
+    width: 5px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #10131b;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #c62121;
+}
+
+/*---wrapper---*/
+.wrapper {
+    width: 1000px;
+    overflow: hidden;
+    margin: auto;
+}
+
+/*---top---*/
+.top {
+    background: #151515;
+    width: 100%;
+    height: 88px;
+    z-index: 9999;
+}
+
+/*---logo---*/
+.logo {
+    float: left;
+    width: 70px;
+    margin: 10px 0 10px 3%;
+}
+
+/*---page---*/
+.page {
+    overflow: hidden;
+    background: rgba(255,255,255,0.9);
+    width: 50%;
+    min-height: 100vh;
+    float: left;
+}
+
+.page h1 {
+    margin: 130px 6% 0;
+    font: 25px Lato;
+    border-left: 10px solid #c62121;
+    padding: 2%;
+    background: #fafafb;
+    color: #616161;
+}
+
+.page h2 {
+    padding: 6%;
+    font: 20px Lato;
+    padding-top: 20px;
+    color: #616161;
+}
+
+.about {
+    overflow: hidden;
+}
+
+.working {
+    overflow: hidden;
+}
+
+.team {
+    background: #fff;
+}
+
+.leasing {
+    overflow: hidden;
+}
+
+.management {
+    overflow: hidden;
+}
+
+.consulting {
+    overflow: hidden;
+}
+
+.contact {
+    overflow: hidden;
+}
+
+.slides-container li h1 {
+    color: #fff;
+    font: 6vw 'Open Sans Condensed';
+    font-weight: 900;
+    letter-spacing: 4px;
+    text-align: center;
+    top: 45%;
+    text-shadow: 1px 1px 5px #000;
+    position: absolute;
+    z-index: 999;
+    width: 100%;
+    line-height: 40px;
+}
+
+.slides-container li h1 span {
+    font-size: 3vw;
+}
+
+.contact_map {
+    width: 88%;
+    height: 200px;
+    margin: 6%;
+    float: left;
+}
+
+textarea {
+    resize: none;
+}
+
+#contact-form {
+    margin: 6%;
+}
+
+.animate {
+    transition: all .1s;
+    -webkit-transition: all .1s;
+}
+
+.action-button {
+    border: none;
+    padding: 2%;
+    border-radius: 5px;
+    font: 16px Lato;
+    color: #FFF;
+    text-decoration: none;
+    width: 100%;
+}
+
+.yellow {
+    background-color: #c62121;
+    border-bottom: 5px solid #b51a1a;
+}
+
+.action-button:active {
+    transform: translate(0px,5px);
+    -webkit-transform: translate(0px,5px);
+    border-bottom: 1px solid;
+}
+
+.form-control {
+    font: 15px Lato;
+    border: none;
+    border: 1px solid #c9d0d0;
+    width: 96%;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 2%;
+}
+
+.right {
+    right: 0;
+    width: 50%;
+    background: none;
+    height: 80%;
+    position: absolute;
+}
+
+.logo {
+    width: 58px;
+    float: left;
+}
+
+.phone,.fax {
+    float: left;
+    padding: 3%;
+    background: #F9F9F9;
+    margin: 0 0 0 6%;
+    margin-bottom: 6%;
+    font: 17px 'lato';
+    overflow: hidden;
+    width: 35%;
+}
+
+.phone i,.fax i, .contact_mails i {
+    margin-right: 2%;
+    color: #c62121;
+    border-right: 1px solid #f1f1f1;
+    padding-right: 2%;
+}
+
+.blog_post {
+    overflow: hidden;
+}
+
+.blog_image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.blogimg {
+    padding: 20px 40px;
+}
+
+.blog_read {
+    float: right;
+    padding: 10px;
+    background: #f8f8f8;
+    border: 1px solid #e9e9e9;
+    border-radius: 5px;
+    font: 15px arial;
+    text-align: center;
+    color: #696969;
+    margin-right: 40px;
+}
+
+.vyblog h1 {
+    margin: 20px 40px 0;
+    font: 25px Lato;
+    border-left: 10px solid #c62121;
+    padding: 15px;
+    background: #fafafb;
+    color: #616161;
+}
+
+.vyblog h2 {
+    padding: 40px;
+    font: 20px Lato;
+    padding-top: 20px;
+    color: #616161;
+}
+
+.blog_post:nth-child(1) h1 {
+    margin-top: 100px;
+}
+
+.vyblog {
+    max-width: 880px;
+    margin: auto;
+    padding-bottom: 20px;
+}
+
+.team_img {
+    padding: 20px 40px 0;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.team_img img {
+    width: 100%;
+}
+
+.page_slides {
+    top: 0;
+    position: fixed;
+    z-index: -100;
+    width: 100%;
+    height: 1000px;
+}
+
+#page_slides {
+    top: 0;
+    position: absolute;
+    z-index: -100;
+    width: 100%;
+    height: 1000px;
+}
+
+.teampage {
+    width: 100%;
+    overflow: hidden;
+}
+
+.teampage2 {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+#teampage2 {
+    float: right;
+}
+
+#teampage2 h1 {
+    margin-top: 60px;
+}
+
+.team_img {
+    display: none;
+}
+
+#teamtext {
+    position: absolute;
+    background: rgba(255,255,255,0.7);
+    top: 60%;
+    right: 10%;
+    z-index: 100;
+    width: 35%;
+    font: 14px 'lato';
+}
+
+#teamtext h1 {
+    position: absolute;
+    left: -10px;
+    border-left: 10px solid #c62121;
+    font: 20px 'lato';
+    padding: 10px;
+}
+#teamtext p {
+    padding: 50px 20px 20px 20px;
+    color: #6a6a6a;
+}
+
+.teamphoto {
+    display: none;
+}
+
+.teamtext {
+    position: absolute;
+    background: rgba(255,255,255,0.7);
+    top: 55%;
+    left: 10%;
+    z-index: 100;
+    width: 30%;
+    font: 14px 'lato';
+}
+.teamtext h1 {
+    position: absolute;
+    left: -10px;
+    border-left: 10px solid #c62121;
+    font: 20px 'lato';
+    padding: 10px;
+}
+.teamtext p {
+    padding: 50px 20px 20px 20px;
+    color: #6a6a6a;
+}
+
+.admin_nav {
+    background: #151515;
+    overflow: hidden;
+    float: left;
+    height: 100%;
+    width: 15%;
+    position: relative;
+}
+
+.admin_nav li a {
+    color: #c4c4c4;
+    font: 14px 'lato';
+    padding: 5%;
+    display: block;
+    border-bottom: 1px solid #0b0b0b;
+    width: 90%;
+    text-align: center;
+}
+
+.admin_nav li a:hover {
+    color: #c62121;
+}
+
+.admin_nav li:last-child a {
+    position: absolute;
+    bottom: 0;
+    background: #c62121;
+}
+
+.admin_nav li:last-child a:hover {
+    background: #000;
+}
+
+.admin_nav li a i {
+    float: left;
+}
+
+.admin_logo {
+    width: 100%;
+    background: #000;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.admin_logo img {
+    width: 50%;
+}
+
+.admin_wrapper {
+    width: 85%;
+    float: left;
+}
+
+.adminsec h1 {
+    background: #fcfcfc;
+    border-bottom: 1px solid #f6f6f6;
+    width: 100%;
+    font: 20px 'lato';
+    padding: 20px 0;
+}
+
+.adminsec h1 span {
+    margin-left: 20px;
+}
+
+.adminsec h1 a {
+    float: right;
+    margin-right: 20px;
+    color: #c62121;
+}
+
+.admin_lists {
+    width: 90%;
+    margin: 2% auto;
+    padding: 1%;
+    background: #fcfcfc;
+    border-bottom: 1px solid #f6f6f6;
+    font: 14px 'lato';
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.admin_lists span {
+    float: left;
+}
+
+.admin_lists span:first-child {
+    margin-right: 20px;
+}
+
+.admin_lists a {
+    color: #555555;
+}
+
+.admin_Control {
+    float: right;
+    font-size: 20px;
+}
+
+.admin_Control a {
+    margin-left: 10px;
+    float: right;
+    color: #2cbc00;
+}
+
+.admin_Control a:first-child
+{
+    color: #d70014;
+}
+
+.blogs_title {
+    width: 70%;
+    float: left;
+}
+
+.add_forms {
+    width: 90%;
+    margin: 2% auto;
+}
+
+.add_forms > input, textarea {
+    width: 100%;
+    padding: 1%;
+    margin-bottom: 1.5%;
+    font: 14px 'lato';
+}
+
+.add_forms > textarea {
+    height: 25%;
+}
+
+.buttons {
+    background: #151515;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+}
+
+.admin_info {
+    float: right;
+    width: 85%;
+}
+
+.admin_info > .green {
+    color: #555555;
+    background: #cce7c1;
+    width: 80%;
+    margin: 2% auto;
+    padding: 1%;
+    font: 15px 'lato';
+    text-align: center;
+    border-radius: 5px;
+}
+
+.admin_info > .red {
+    color: #FFF;
+    background: #D8A0A0;
+    width: 80%;
+    margin: 2% auto;
+    padding: 1%;
+    font: 15px 'lato';
+    text-align: center;
+    border-radius: 5px;
+}
+
+.contact_mails {
+    width: 82%;
+    padding: 3%;
+    background: #F9F9F9;
+    margin: 0 0 0 6%;
+    margin-bottom: 6%;
+    font: 17px 'lato';
+    overflow: hidden;
+}
