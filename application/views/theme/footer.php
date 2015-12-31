@@ -1,5 +1,5 @@
 
-		
-	</body>
-	
+
+</div><!-- /wrapper -->
+</body>
 </html>
