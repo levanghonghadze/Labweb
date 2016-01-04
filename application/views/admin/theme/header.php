@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div class="top">
-	<div class="admin_logo"><a href=""><strong>Labweb</strong>dashboard</a></div>
+	<div class="admin_logo"><a href="<?php echo site_url('admin'); ?>"><strong>Labweb</strong>dashboard</a></div>
 </div>
 
 <div class="admin">
@@ -32,17 +32,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<li class="check_link"><a class="nav" href="#">ივენთები</a></li>
 			<ul class="drop_ul">
 				<li><a href="<?php echo site_url('admin/add_event'); ?>">ივენთის შექმნა</a></li>
-				<li><a href="">ივენთების მართვა</a></li>
+				<li><a href="<?php echo site_url('admin/events'); ?>">ივენთების მართვა</a></li>
 			</ul>
 	  <li class="check_link"><a class="nav" href="#">ფორმები</a></li>
 			<ul class="drop_ul">
-				<li><a href="">ფორმის შექმნა</a></li>
-				<li><a href="">ფორმების მართვა</a></li>
+				<li><a href="<?php echo site_url('admin/add_forms'); ?>">ფორმის შექმნა</a></li>
+				<li><a href="<?php echo site_url('admin/forms'); ?>">ფორმების მართვა</a></li>
 			</ul>
 	  <li class="check_link"><a class="nav" href="#">მენტორები</a></li>
 			<ul class="drop_ul">
-				<li><a href="">მენტორის დამატება</a></li>
-				<li><a href="">მენტორების მართვა</a></li>
+				<li><a href="<?php echo site_url('admin/add_mentors'); ?>">მენტორის დამატება</a></li>
+				<li><a href="<?php echo site_url('admin/mentors'); ?>">მენტორების მართვა</a></li>
 			</ul>
 	  <li class="check_link"><a class="nav" href="#">ბლოგი</a></li>
 			<ul class="drop_ul">

@@ -40,4 +40,17 @@ class Model extends CI_Model {
                 }
                 return FALSE;
     }
+
+    public function remove($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('mentors');
+    }
+
+    public function edit($id)
+    {
+        $this->db->select('*');
+        $this->db->from('mentors');
+        $this->db->where('id', $id);
+    }
 } 
