@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 04, 2016 at 12:12 AM
+-- Generation Time: Jan 05, 2016 at 10:24 AM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 7.0.0
 
@@ -54,17 +54,27 @@ CREATE TABLE `events` (
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `location` varchar(255) CHARACTER SET utf8 NOT NULL,
   `overview` text NOT NULL,
-  `form` text CHARACTER SET utf8 NOT NULL
+  `form_id` text CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`id`, `name`, `photo`, `date`, `location`, `overview`, `form`) VALUES
+INSERT INTO `events` (`id`, `name`, `photo`, `date`, `location`, `overview`, `form_id`) VALUES
 (1, 'Student Startup Camp Tartu 2016', 'http://geolab.edu.ge/img/bg/sc-3.png', '2015-12-26 12:20:19', 'University of Tartu / Garage48 HUB Tartu', 'The Estonian Student Startup Camp (ESSC) is an intensive tech entrepreneurship boot-camp designed to arm students with skills and inspiration to launch technology-related ventures. The program is built and delivered by startup entrepreneurs from Estonia and abroad who collaborate to create a hands-on learning experience.\r\n', '<form><input type="text" name="name" value="სახელი"><br><input type="text" name="lastname" value="გვარი"><br><input type="radio" name="მოგწონს ფორმა?" value="კი">კი<br><input type="radio" name="მოგწონს ფორმა?" value="არა">არა<br><select name="სქესი"><option>ქალი</option><option>კაცი</option></select><br></form>'),
 (2, 'Student Startup Camp Tartu 2016', 'http://geolab.edu.ge/img/bg/sc-3.png', '2015-12-26 12:20:19', 'University of Tartu / Garage48 HUB Tartu', 'The Estonian Student Startup Camp (ESSC) is an intensive tech entrepreneurship boot-camp designed to arm students with skills and inspiration to launch technology-related ventures. The program is built and delivered by startup entrepreneurs from Estonia and abroad who collaborate to create a hands-on learning experience.\r\n', '<form><input type="text" name="name" value="სახელი"><br><input type="text" name="lastname" value="გვარი"><br><input type="radio" name="მოგწონს ფორმა?" value="კი">კი<br><input type="radio" name="მოგწონს ფორმა?" value="არა">არა<br><select name="სქესი"><option>ქალი</option><option>კაცი</option></select><br></form>'),
 (3, 'Student Startup Camp Tartu 2016', 'http://geolab.edu.ge/img/bg/sc-3.png', '2015-12-26 12:20:19', 'University of Tartu / Garage48 HUB Tartu', 'The Estonian Student Startup Camp (ESSC) is an intensive tech entrepreneurship boot-camp designed to arm students with skills and inspiration to launch technology-related ventures. The program is built and delivered by startup entrepreneurs from Estonia and abroad who collaborate to create a hands-on learning experience.\r\n', '<form><input type="text" name="name" value="სახელი"><br><input type="text" name="lastname" value="გვარი"><br><input type="radio" name="მოგწონს ფორმა?" value="კი">კი<br><input type="radio" name="მოგწონს ფორმა?" value="არა">არა<br><select name="სქესი"><option>ქალი</option><option>კაცი</option></select><br></form>');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `forms`
+--
+
+CREATE TABLE `forms` (
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -165,6 +175,12 @@ ALTER TABLE `events`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `forms`
+--
+ALTER TABLE `forms`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `labs`
 --
 ALTER TABLE `labs`
@@ -202,6 +218,11 @@ ALTER TABLE `blog`
 --
 ALTER TABLE `events`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `forms`
+--
+ALTER TABLE `forms`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `labs`
 --
