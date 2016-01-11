@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 05, 2016 at 10:24 AM
+-- Generation Time: Jan 11, 2016 at 03:01 AM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 7.0.0
 
@@ -51,20 +51,36 @@ CREATE TABLE `events` (
   `id` int(11) NOT NULL,
   `name` varchar(255) CHARACTER SET utf8 NOT NULL,
   `photo` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `event_start_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `event_end_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `location` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `overview` text NOT NULL,
-  `form_id` text CHARACTER SET utf8 NOT NULL
+  `overview` text CHARACTER SET utf8 NOT NULL,
+  `form_id` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `lab_id` varchar(255) NOT NULL,
+  `mentors_id` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`id`, `name`, `photo`, `date`, `location`, `overview`, `form_id`) VALUES
-(1, 'Student Startup Camp Tartu 2016', 'http://geolab.edu.ge/img/bg/sc-3.png', '2015-12-26 12:20:19', 'University of Tartu / Garage48 HUB Tartu', 'The Estonian Student Startup Camp (ESSC) is an intensive tech entrepreneurship boot-camp designed to arm students with skills and inspiration to launch technology-related ventures. The program is built and delivered by startup entrepreneurs from Estonia and abroad who collaborate to create a hands-on learning experience.\r\n', '<form><input type="text" name="name" value="სახელი"><br><input type="text" name="lastname" value="გვარი"><br><input type="radio" name="მოგწონს ფორმა?" value="კი">კი<br><input type="radio" name="მოგწონს ფორმა?" value="არა">არა<br><select name="სქესი"><option>ქალი</option><option>კაცი</option></select><br></form>'),
-(2, 'Student Startup Camp Tartu 2016', 'http://geolab.edu.ge/img/bg/sc-3.png', '2015-12-26 12:20:19', 'University of Tartu / Garage48 HUB Tartu', 'The Estonian Student Startup Camp (ESSC) is an intensive tech entrepreneurship boot-camp designed to arm students with skills and inspiration to launch technology-related ventures. The program is built and delivered by startup entrepreneurs from Estonia and abroad who collaborate to create a hands-on learning experience.\r\n', '<form><input type="text" name="name" value="სახელი"><br><input type="text" name="lastname" value="გვარი"><br><input type="radio" name="მოგწონს ფორმა?" value="კი">კი<br><input type="radio" name="მოგწონს ფორმა?" value="არა">არა<br><select name="სქესი"><option>ქალი</option><option>კაცი</option></select><br></form>'),
-(3, 'Student Startup Camp Tartu 2016', 'http://geolab.edu.ge/img/bg/sc-3.png', '2015-12-26 12:20:19', 'University of Tartu / Garage48 HUB Tartu', 'The Estonian Student Startup Camp (ESSC) is an intensive tech entrepreneurship boot-camp designed to arm students with skills and inspiration to launch technology-related ventures. The program is built and delivered by startup entrepreneurs from Estonia and abroad who collaborate to create a hands-on learning experience.\r\n', '<form><input type="text" name="name" value="სახელი"><br><input type="text" name="lastname" value="გვარი"><br><input type="radio" name="მოგწონს ფორმა?" value="კი">კი<br><input type="radio" name="მოგწონს ფორმა?" value="არა">არა<br><select name="სქესი"><option>ქალი</option><option>კაცი</option></select><br></form>');
+INSERT INTO `events` (`id`, `name`, `photo`, `event_start_date`, `event_end_date`, `location`, `overview`, `form_id`, `lab_id`, `mentors_id`) VALUES
+(10, 'Geolab Project', 'geolabu.jpg', '2016-01-12 03:30:00', '2016-01-12 04:00:00', 'Merab Aleksidze St.8 Tbilisi, Georgia', 'ჯეოლაბი წარმოადგენს მობილური და ვებ აპლიკაციების ლაბორატორიას. ეს არის სივრცე, რომელიც 24 საათის განმავლობაში ღიაა სხვადასხვა საინტერესო და ინოვაციური პროექტების განხორციელებისათვის. ჯეოლაბი აღჭურვილია უახლესი ტექნოლოგიებით და ყოველთვის მზადაა დაგეხმაროთ თქვენი კრეატიული აზროვნებისა და ტექნიკური უნარ–ჩვევების რეალიზებაში.\r\n\r\nჯეოლაბის განუყოფელი ნაწილია სასწავლო ცენტრი – ინფორმაციული ტექნოლოგიების ინსტიტუტი (ITI). აქ ნებისმიერ მსურველს 15 სპეციალობიდან შეუძლება აირჩიოს და 3 თვის განმავლობაში დაეუფლოს მისთვის საინტერესო პროფესიას. ჯეოლაბი საშუალებას გაძლევთ თავად შექმნათ პროგრამული პროდუქტი, შეიმუშაოთ ვებ-გვერდის ან მობილური აპლიკაციის დიზაინი, დააპროექტოთ და მართოთ პროგრამულ სფეროსთან დაკავშირებული პროექტები.\r\n', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `former`
+--
+
+CREATE TABLE `former` (
+  `id` int(11) NOT NULL,
+  `val1` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `val2` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `val3` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `val4` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `event_id` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -73,8 +89,16 @@ INSERT INTO `events` (`id`, `name`, `photo`, `date`, `location`, `overview`, `fo
 --
 
 CREATE TABLE `forms` (
-  `id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `form` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `forms`
+--
+
+INSERT INTO `forms` (`id`, `form`) VALUES
+(1, 'თქვენი სახელი:<br>\r\n  <input type="text" name="val1" value="">\r\n  <br>\r\n  თქვენი გვარი:<br>\r\n  <input type="text" name="val2" value="">\r\n  <br><br>');
 
 -- --------------------------------------------------------
 
@@ -105,17 +129,10 @@ INSERT INTO `labs` (`id`, `lab_name`, `lab_photo`, `lab_address`, `lab_phone`) V
 
 CREATE TABLE `mentors` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `mentors_name` varchar(255) CHARACTER SET utf8 NOT NULL,
   `info` varchar(255) CHARACTER SET utf8 NOT NULL,
   `photo` varchar(255) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mentors`
---
-
-INSERT INTO `mentors` (`id`, `name`, `info`, `photo`) VALUES
-(11, 'Andrei Korobeinik', 'Board member at Enterprise Estonia and EstBAN', '');
 
 -- --------------------------------------------------------
 
@@ -156,7 +173,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `lab_id`) VALUES
-(1, 'levani', 'levani', 'tesli@gmail.com', '1');
+(1, 'levani', 'b7ad03d0f70e378eff4df7d35d6e8f6effa64b3d', 'levani@gmail.com', '1');
 
 --
 -- Indexes for dumped tables
@@ -172,6 +189,12 @@ ALTER TABLE `blog`
 -- Indexes for table `events`
 --
 ALTER TABLE `events`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `former`
+--
+ALTER TABLE `former`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -217,12 +240,17 @@ ALTER TABLE `blog`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `former`
+--
+ALTER TABLE `former`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `forms`
 --
 ALTER TABLE `forms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `labs`
 --
@@ -232,7 +260,7 @@ ALTER TABLE `labs`
 -- AUTO_INCREMENT for table `mentors`
 --
 ALTER TABLE `mentors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 --
 -- AUTO_INCREMENT for table `pages`
 --

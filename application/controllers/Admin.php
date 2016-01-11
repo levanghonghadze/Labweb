@@ -32,17 +32,38 @@ class Admin extends CI_Controller {
         $this->form_validation->set_rules('event_location', 'ლოკაციის', 'required');
         $this->form_validation->set_rules('event_overview', 'ივენთის შესახებ', 'required');
 
-		if ($this->form_validation->run() === FALSE) {
-			$this->load->view('admin/views/add_event');
-		}else{
-			echo 'event created';
+		if ( $_SERVER['REQUEST_METHOD'] != 'POST' && !empty($_POST) ){
+			redirect('/main/index');
 		}
+			$config['upload_path']          = './uploads/';
+	        $config['allowed_types']        = 'gif|jpg|png';
+	        $config['max_size']             = 2000;
+	        $config['max_width']            = 1024;
+	        $config['max_height']           = 768;
+			$this->load->library('upload', $config);
+			$image = '';
+
+			 if ( ! $this->upload->do_upload('photo'))
+                {
+                        $error = array('error' => $this->upload->display_errors());
+                }
+                else
+                {
+                        $data = array('upload_data' => $this->upload->data());
+                        $image = $data['upload_data']['file_name'];
+                }
+		
+		$this->load->model('model');
+		$this->model->check_event($image);
+
 	}
 	
 	public function events()
 	{
+		$this->load->model('model');
+		$data['events'] = $this->model->select_events();
 
-		$this->load->view('admin/events');
+		$this->load->view('admin/events', $data);
 		$this->load->view('admin/theme/footer');
 	}
 	
@@ -58,7 +79,7 @@ class Admin extends CI_Controller {
         $this->form_validation->set_rules('password', 'პაროლის', 'required');
 
 		if ($this->form_validation->run() === FALSE) {
-			$this->load->view('admin/main');
+			$this->load->view('');
 		}else{
 		    $result=$this->Model->login();    
 		    if($result){
@@ -123,23 +144,33 @@ class Admin extends CI_Controller {
         $this->form_validation->set_rules('mentor_name', 'მენტორის სახელის', 'required');
         $this->form_validation->set_rules('mentor_info', 'მენტორის ინფორმაციის', 'required');
 
-		if ($this->form_validation->run() === FALSE) {
-			$this->load->view('admin/views/add_mentors');
-		}else{
-
-	    	$mentor_name = $this->input->POST('mentor_name');
-	    	$mentor_info = $this->input->POST('mentor_info');
-
-			$this->db->set('name', $mentor_name);
-			$this->db->set('info', $mentor_info);
-			$this->db->insert('mentors');
-
+		if ( $_SERVER['REQUEST_METHOD'] != 'POST' && !empty($_POST) ){
+			redirect('/main/index');
 		}
+			$config['upload_path']          = './uploads/';
+	        $config['allowed_types']        = 'gif|jpg|png';
+	        $config['max_size']             = 2000;
+	        $config['max_width']            = 1024;
+	        $config['max_height']           = 768;
+			$this->load->library('upload', $config);
+			$image = '';
+
+			 if ( ! $this->upload->do_upload('photo'))
+                {
+                        $error = array('error' => $this->upload->display_errors());
+                }
+                else
+                {
+                        $data = array('upload_data' => $this->upload->data());
+                        $image = $data['upload_data']['file_name'];
+                }
+		
+		$this->load->model('model');
+		$this->model->check_mentor($image);
 	}
 
 	public function update_mentors($id)
 	{
-        $this->form_validation->set_error_delimiters('<div class="errors">', '</div>');
         $this->form_validation->set_rules('mentor_name', 'მენტორის სახელის', 'required');
         $this->form_validation->set_rules('mentor_info', 'მენტორის ინფორმაციის', 'required');
 
