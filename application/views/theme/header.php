@@ -12,11 +12,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <ul class="top_nav">
-<li><a href="<?php echo site_url('main'); ?>">მთავარი გვერდი</a></li>
-<li><a href="<?php echo site_url('main/page/about_us'); ?>">ჩვენს შესახებ</a></li>
-<li><a href="<?php echo site_url('main/events'); ?>">ივენთები</a></li>
-<li><a href="<?php echo site_url('main/mentors'); ?>">მენტორები</a></li>
-<li><a href="<?php echo site_url('main/blog'); ?>">ბლოგი</a></li>
+<li><a href="<?php echo site_url('/'); ?>">მთავარი გვერდი</a></li>
+<li><a href="<?php echo site_url('about'); ?>">ჩვენს შესახებ</a></li>
+<li><a href="<?php echo site_url('events'); ?>">ივენთები</a></li>
+<li><a href="<?php echo site_url('mentors'); ?>">მენტორები</a></li>
+<li><a href="<?php echo site_url('blog'); ?>">ბლოგი</a></li>
 <li style="float: right;"><a href="<?php echo site_url('/admin'); ?>">ADMIN</a></li>
 </ul>
 

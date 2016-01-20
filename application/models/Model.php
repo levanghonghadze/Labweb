@@ -66,7 +66,7 @@ class Model extends CI_Model {
             $event_location = $this->input->POST('event_location');
             $event_overview = $this->input->POST('event_overview');
 
-            $this->db->set('name', $event_name);
+            $this->db->set('event_name', $event_name);
             $this->db->set('event_start_date', $event_start_date);
             $this->db->set('event_end_date', $event_end_date);
             $this->db->set('location', $event_location);
@@ -85,10 +85,18 @@ class Model extends CI_Model {
             $mentor_name = $this->input->POST('mentor_name');
             $mentor_info = $this->input->POST('mentor_info');
 
-            $this->db->set('mentors_name', $mentor_name);
+            $this->db->set('mentor_name', $mentor_name);
             $this->db->set('info', $mentor_info);
             $this->db->set('photo', $image);
             $this->db->insert('mentors');
+        }
+        if ($this->form_validation->run()) {
+            $this->load->model('model');
+            $data['mentors'] = $this->model->select_mentors();
+            $data['updated'] = '<div class="updated"><i class="fa fa-check"></i> მენტორი წარმატებით დაემატა.</div>';
+
+            $this->load->view('admin/mentors', $data);
+            $this->load->view('admin/theme/footer');
         }
     }
 
@@ -106,5 +114,15 @@ class Model extends CI_Model {
         $this->db->set('val4', $val4);
         $this->db->set('event_id', $event_id);
         $this->db->insert('former');
+    }
+
+    public function select_forms()
+    {
+        $this->db->select('forms.*, events.event_name');
+        $this->db->from('forms');
+        $this->db->order_by("forms.id", "DESC");
+        $this->db->join('events', 'events.id = forms.event_id');
+        $query = $this->db->get();
+        return $query->result_array();
     }
 } 

@@ -1,14 +1,14 @@
-html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video,a {
-    background: transparent;
-    border: 0;
-    font-weight: 400;
+* {
     font-size: 100%;
     margin: 0;
     outline: 0;
     padding: 0;
-    vertical-align: baseline;
     list-style-type: none;
     text-decoration: none;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
 }
 
 @font-face {
@@ -25,7 +25,7 @@ html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address
     src: url(../fonts/bpg_arial_2009.ttf);
 }
 
-body {
+body, html {
     background: #F2F2F2;
 }
 
@@ -102,6 +102,7 @@ body {
     left:32%;
     right:32%;
     top: 13vh;
+    border-radius: 4px;
 }
 
 .get_event:hover {
@@ -115,8 +116,8 @@ body {
     margin: 2% 0 0 2%;
     border-radius: 10px;
     background: #F7F7F7;
-    width: 20%;
-    height: 40vh;
+    width: 17.6%;
+    height: 30vh;
     position: relative;
 }
 
@@ -144,12 +145,8 @@ body {
 .mentors_info span {
     position: absolute;
     bottom: 20px;
-    right: 0;
-    left: 0;
-}
-
-.mentors_info:hover {
-    background: -webkit-linear-gradient(top, rgba(0,0,0,0) -1%,rgba(0,0,0,0) 0%,rgba(140,19,181,0.65) 100%);
+    right: 10px;
+    left: 10px;
 }
 
 .show_event h1 {
@@ -164,21 +161,21 @@ body {
     padding: 10px 0;
 }
 
-.blog_img {
-    width: 100%;
-    height: 20vh;
-}
-
 section {
     overflow: hidden;
 }
 
 .sec_title {
-    font: 20px 'bpg_quadrosquare_mtavruli_2009';
-    background: #fff;
-    border-radius: 2px;
-    margin: 2% 2% 0 2%;
-    padding: 10px;
+    font: 30px 'bpg_quadrosquare_mtavruli_2009';
+    padding: 2% 2% 0 2%;
+}
+
+.main_event_form {
+    margin: 1% 0 1% 2%;
+}
+
+.main_events > .sec_title {
+    padding-top: 1%;
 }
 
 .main_news {
@@ -189,8 +186,6 @@ section {
     margin: 0;
     background: none;
     color: #fff;
-    padding: 2% 2% 0 2%;
-    font-size: 30px;
     margin-bottom: 2%;
 }
 
@@ -234,6 +229,76 @@ section {
     display: block;
     color: #4c4c4c;
     font: 12px 'bpg_quadrosquare_mtavruli_2009';
+    padding-top: 2%;
+}
+
+.main_mentors_form {
+    border-radius: 0;
+    width: 20%;
+    height: 25vh;
+    margin: 0;
+}
+
+.main_mentors > .sec_title {
+    padding: 1% 2% 1% 2%;
+    background: #50215f;
+    color: #fff;
+}
+
+.main_mentors > .sec_title a {
+    color: #fff;
+    background: #461a54;
+    border-radius: 5px;
+    font-size: 14px;
+    float: right;
+    padding: 10px;
+}
+
+.main_mentors > .sec_title a:hover {
+    background: #fff;
+    color: #461a54;
+}
+
+.blog_form {
+    overflow: hidden;
+    background: #FFF;
+    margin: 2% 2% 0 2%;
+    color: #000;
+    border-radius: 4px;
+    position: relative;
+}
+
+.blog_form h1 {
+    font: bold 20px 'bpg_arial_2009';
+    padding-top: 1%;
+    color: #2b2b2b;
+}
+
+.blog_form h1 span {
+    font-size: 12px;
+    color: #878787;
+    font-weight: normal;
+}
+
+.blog_img {
+    width: 20%;
+    float: left;
+    height: 20vh;
+    margin: 1%;
+    border-radius: 4px;
+}
+
+.blog_text {
+    font: 15px 'bpg_arial_2009';
+    padding-top: 0.5%;
+}
+
+.readmore {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font: bold 16px 'arial';
+    color: #4b4b4b;
 }
 
 @media (max-width: 768px) {
@@ -244,5 +309,17 @@ section {
     margin-bottom: 0;
     margin-top: 0;
     padding-top: 2%;
+  }
+  .main_mentors_form {
+    width: 50%;
+  }
+  .main_mentors_form:last-child {
+    display: none;
+  }
+  .main_event_form {
+    width: 96%;
+  }
+  .mentors_form {
+    width: 30%;
   }
 }

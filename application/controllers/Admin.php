@@ -99,8 +99,10 @@ class Admin extends CI_Controller {
 	
 	public function forms()
 	{
+		$this->load->model('model');
+		$data['forms'] = $this->model->select_forms();
 
-		$this->load->view('admin/forms');
+		$this->load->view('admin/forms', $data);
 		$this->load->view('admin/theme/footer');
 	}
 	
@@ -125,7 +127,12 @@ class Admin extends CI_Controller {
 		$this->load->model('model');
 		$this->model->remove($id);
 
-		echo 'mentor removed';
+            $this->load->model('model');
+            $data['mentors'] = $this->model->select_mentors();
+            $data['updated'] = '<div class="updated"><i class="fa fa-trash"></i> მენტორი წარმატებით წაიშალა.</div>';
+
+            $this->load->view('admin/mentors', $data);
+            $this->load->view('admin/theme/footer');
 	}
 	
 	public function edit_mentors($id)
@@ -149,9 +156,7 @@ class Admin extends CI_Controller {
 		}
 			$config['upload_path']          = './uploads/';
 	        $config['allowed_types']        = 'gif|jpg|png';
-	        $config['max_size']             = 2000;
-	        $config['max_width']            = 1024;
-	        $config['max_height']           = 768;
+	        $config['max_size']             = 9000;
 			$this->load->library('upload', $config);
 			$image = '';
 
@@ -181,15 +186,20 @@ class Admin extends CI_Controller {
 	    	$mentor_name = $this->input->POST('mentor_name');
 	    	$mentor_info = $this->input->POST('mentor_info');
 
-			$this->db->set('name', $mentor_name);
+			$this->db->set('mentor_name', $mentor_name);
 			$this->db->set('info', $mentor_info);
 			$this->db->where('id', $id);
 			$this->db->update('mentors');
+		}
 
-			echo 'mentor updated';
+		if ($this->form_validation->run()){
+			$this->load->model('model');
+			$data['mentors'] = $this->model->select_mentors();
+			$data['updated'] = '<div class="updated"><i class="fa fa-refresh"></i> ინფორმაცია წარმატებით შეიცვალა.</div>';
 
+			$this->load->view('admin/mentors', $data);
+			$this->load->view('admin/theme/footer');
 		}
 	}
-	
 }
  
