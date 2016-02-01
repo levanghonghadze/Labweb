@@ -17,10 +17,19 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/theme/footer');
 	}
 	
+	public function home()
+	{
+		$this->load->view('admin/home');
+	}
+	
 	public function add_event()
 	{
-
+		if ($this->session->userdata('is_logged_in')) {
 		$this->load->view('admin/views/add_event');
+		} else {
+			redirect('admin');
+		}
+
 		$this->load->view('admin/theme/footer');
 	}
 
@@ -81,13 +90,28 @@ class Admin extends CI_Controller {
 		if ($this->form_validation->run() === FALSE) {
 			$this->load->view('');
 		}else{
-		    $result=$this->Model->login();    
+		    $result=$this->Model->login(); 
+
+			$data = array(
+				'username' => $this->input->post('username'),
+				'ip_address' => $_SERVER['REMOTE_ADDR'],
+				'is_logged_in' => 1
+			);
+
+			$this->session->set_userdata($data);
+
 		    if($result){
-		    redirect('/admin/add_event');
+		    redirect('/admin/home');
 		    }else{
 		    redirect(base_url('/error'));
 	    	}
 		}
+    }
+
+    public function logout()
+    {
+    	$this->session->sess_destroy();
+    	redirect('admin');
     }
 	
 	public function add_forms()

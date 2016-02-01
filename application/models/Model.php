@@ -21,6 +21,15 @@ class Model extends CI_Model {
         return $query->result_array();
     }
 
+    public function mentor_events($id){
+         $this->db->select('events.*,mentors.*,event_mentors.*');
+         $this->db->join('events', 'events.id = event_mentors.event_id');
+         $this->db->join('mentors', 'mentors.id = event_mentors.mentor_id');
+         $this->db->where('event_mentors.event_id', $id);
+         $query = $this->db->get('event_mentors');
+         return $query->result_array();
+    }
+
     public function select_blog()
     {
         $this->db->select('*');

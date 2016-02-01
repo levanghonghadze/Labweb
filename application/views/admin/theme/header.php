@@ -49,6 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<li><a href="">ბლოგის დამატება</a></li>
 				<li><a href="">ბლოგების მართვა</a></li>
 			</ul>
+	 <li><a class="nav" href="<?php echo site_url('admin'); ?>">გასვლა</a></li>
 	</ul>
 
 <script>

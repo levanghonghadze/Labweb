@@ -1,7 +1,6 @@
 * {
     font-size: 100%;
     margin: 0;
-    outline: 0;
     padding: 0;
     list-style-type: none;
     text-decoration: none;
@@ -31,18 +30,40 @@ body, html {
 
 .top_nav {
     width: auto;
-    background: #fff;
-    border-bottom: 1px solid #F9F9F9;
+    background: linear-gradient(to bottom, #7f4b90 0%,#794689 42%,#70407f 100%);
+    border-bottom: 1px solid #5d2e6c;
     overflow: hidden;
 }
 
 .top_nav li a {
     float: left;
     display: block;
-    padding: 15px;
-    color: #6D6D6D;
+    padding: 20px 15px;
+    color: #fff;
     font: 15px 'bpg_quadrosquare_mtavruli_2009';
+    border-right: 1px solid #5d2e6c;
 }
+
+.top_nav li a:hover {
+    background: #5d2e6c;
+}
+
+.logo {
+    background: -webkit-linear-gradient(left, rgba(80,33,95,0) 0%,rgba(80,33,95,0.65) 99%,rgba(80,33,95,0.65) 100%);
+    float: left;
+    font: 15px 'lato';
+    color: #fff;
+    padding: 11px 30px;
+}
+
+.logo a {
+    color: #fff;
+}
+
+.logo strong {
+    font: bold 30px 'lato';
+}
+
 
 .wrapper {
     margin: auto;
@@ -57,12 +78,22 @@ body, html {
     background: #f9f9f9;
     width: 30.5%;
     position: relative;
+    box-shadow: 0px 0px 2px #CECECE;
+}
+
+.show_event > .event_img {
+    width: 100%;
+    height: 40vh;
+    max-height: 300px;
+    overflow: hidden;
+    position: relative;
 }
 
 .event_img {
     width: 100%;
     height: 20vh;
     overflow: hidden;
+    position: relative;
 }
 
 .event_info {
@@ -151,14 +182,57 @@ body, html {
 
 .show_event h1 {
     color: #fff;
-    font: bold 3.0vh 'arial';
-    padding: 3%;
+    font: bold 3.0vh 'arial';    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
 }
 
 .event_overview {
-    font: 15px 'arial';
-    padding: 10px 0;
+    font: 15px 'bpg_arial_2009';
+    line-height: 22px;
+    padding: 1%;
+    background: #fff;
+    color: #656565;
+}
+
+.show_event_mentors {
+    width: 100%;
+    background: #fff;
+}
+
+.show_event_mentors h2 {
+    font: 20px 'bpg_quadrosquare_mtavruli_2009';
+    padding: 1%;
+    color: #4f4f4f;
+}
+
+.show_event_mentors_form {
+    float: left;
+    position: relative;
+}
+
+.show_event_mentors_img {
+    width: 25vh;
+    height: 25vh;
+}
+
+.show_event_mentors_form h2 {
+    font: 20px 'bpg_quadrosquare_mtavruli_2009';
+    position: absolute;
+}
+
+.show_event_mentors_form h2 {
+    font: 15px 'bpg_arial_2009';
+    color: #000;
+}
+
+.show_event_mentors_form > .mentors_info span {
+    top: 0;
+    text-align: center;
+    padding-top: 10px;
 }
 
 section {
@@ -301,6 +375,35 @@ section {
     color: #4b4b4b;
 }
 
+.register_event_button {
+    background: linear-gradient(to bottom, #7f4b90 0%,#794689 42%,#70407f 100%);
+    border: none;
+    border-bottom: 1px solid #5d2e6c;
+    padding: 1%;
+    border-radius: 2px;
+    color: #fff;
+    font: 20px 'bpg_arial_2009';
+    float: right;
+    margin: 1%;
+}
+
+.register_event {
+    background: #fafafa;
+    border: solid #f2f2f2;
+    border-width: 1px 0 1px 0;
+    overflow: hidden;
+}
+
+.register_event > .event_location {
+    padding: 1% 0 0 1%;
+    font: 20px 'arial', 'bpg_arial_2009';
+}
+
+.register_event > .event_date {
+    padding: 5px 0 1% 1%;
+}
+
+
 @media (max-width: 768px) {
   .news_form {
     width: 98%;
@@ -322,4 +425,345 @@ section {
   .mentors_form {
     width: 30%;
   }
+}
+
+
+
+
+
+
+
+
+
+
+.section > .button {
+    padding-left: 20px;
+}
+.fb-clear {
+    clear: both
+}
+.fb-main {
+    margin: 0 2%;
+    position: relative;
+    font-family: 'bpg_arial_2009', Tahoma
+}
+.fb-save-wrapper {
+    position: absolute;
+    right: 20px;
+    top: 10px
+}
+.fb-left {
+    position: fixed;
+    float: left;
+    width: 320px;
+    padding-top: 10px;
+}
+.fb-right {
+    padding-top: 70px;
+    margin-left: 320px;
+    border-left: 1px solid #ddd;
+    padding-left: 20px;
+    min-height: 100%;
+    overflow: hidden;
+}
+.fb-no-response-fields {
+    color: #999
+}
+.fb-tabs {
+    list-style: none;
+    margin: 0 0 20px 0;
+    padding: 0 0 0 20px;
+    border-bottom: 1px solid #ccc
+}
+.fb-tabs li {
+    display: inline-block
+}
+.fb-tabs li a {
+    display: block;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+    font-size: 13px;
+    cursor: pointer;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent
+}
+.fb-tabs li.active a {
+    border: 1px solid #ccc;
+    margin-bottom: -1px;
+    border-bottom-color: #fff
+}
+.fb-tab-content .fb-tab-pane {
+    padding: 0 20px;
+    display: none
+}
+.fb-tab-content .fb-tab-pane.active {
+    display: block
+}
+.fb-add-field-types .section {
+    padding-bottom: 5px;
+    margin-bottom: 20px
+}
+.fb-add-field-types {
+    font-size: 0
+}
+.fb-add-field-types a {
+    font-size: 13px;
+    display: inline-block;
+    width: 48.5%;
+    background-color: #1abc9c;
+    margin-bottom: 9px;
+    box-sizing: border-box
+}
+.fb-add-field-types a:nth-child(odd) {
+    margin-right: 3%
+}
+.fb-add-field-types a .symbol {
+    opacity: .6;
+    margin: 0 .25em 0 -1em
+}
+.fb-response-fields {
+    padding-bottom: 150px
+}
+.fb-response-fields a.sortable-placeholder {
+    display: block;
+    border: 1px dashed #ddd;
+    min-height: 80px;
+    height: 80px;
+    width: 100%
+}
+.fb-field-wrapper {
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 20px
+}
+.fb-field-wrapper input {
+    border-radius: 3px;
+    border: thin solid #ddd
+}
+.fb-field-wrapper:hover .actions-wrapper,
+.fb-field-wrapper.editing .actions-wrapper {
+    display: block
+}
+.fb-field-wrapper:hover .subtemplate-wrapper {
+    border-color: #ddd;
+    border-radius: 3px
+}
+.fb-field-wrapper.editing {
+    background-color: #ecf0f1;
+    border-radius: 3px
+}
+.fb-field-wrapper.editing .subtemplate-wrapper {
+    border-color: #d9e1e3;
+    border-style: solid;
+    margin: 0;
+    border-radius: 3px
+}
+.fb-field-wrapper .actions-wrapper {
+    display: none;
+    position: absolute;
+    bottom: -7px;
+    right: 5px;
+    z-index: 3
+}
+.fb-field-wrapper .actions-wrapper a {
+    display: inline-block;
+    background-color: #ccc;
+    padding: 2px 8px
+}
+.edit-response-field input,
+.edit-response-field textarea,
+.edit-response-field select {
+    border: thin solid #ddd;
+    border-radius: .25em;
+    padding: .5em;
+    display: inline-block;
+    height: auto;
+    vertical-align: middle;
+}
+.edit-response-field input:focus,
+.edit-response-field textarea:focus,
+.edit-response-field select:focus {
+    outline: none;
+    border: thin solid #794689;
+}
+.edit-response-field select {
+    font-size: 14px
+}
+.fb-field-wrapper .actions-wrapper a.js-duplicate,
+.fb-edit-field-wrapper .js-add-option {
+    background-color: #2ecc71;
+    border: none
+}
+.fb-field-wrapper .actions-wrapper a.js-clear,
+.fb-edit-field-wrapper .js-remove-option {
+    background-color: #e74c3c;
+    border: none
+}
+.fb-field-wrapper .subtemplate-wrapper {
+    border: 1px dashed transparent;
+    margin-bottom: 10px;
+    padding: 10px;
+    position: relative
+}
+.fb-field-wrapper .subtemplate-wrapper .cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 2
+}
+.fb-field-wrapper > label {
+    display: block;
+    border-bottom: thin solid #eee;
+    padding-bottom: 3px;
+    margin-bottom: 7px
+}
+.fb-field-wrapper .subtemplate-wrapper abbr {
+    color: #f00
+}
+.fb-field-wrapper .input-line {
+    clear: both;
+    margin-bottom: 10px
+}
+.fb-field-wrapper .input-line .above-line {
+    margin-top: 7px
+}
+.fb-field-wrapper .input-line > span {
+    display: inline-block;
+    vertical-align: top
+}
+.fb-field-wrapper .input-line > span input {
+    width: 100%
+}
+.fb-field-wrapper .input-line > span > label {
+    display: block;
+    font-size: 13px;
+    margin-left: 3px
+}
+.fb-field-wrapper .help-block {
+    display: block;
+    font-size: 12px;
+    margin-top: 5px
+}
+.fb-edit-field-wrapper {
+    font-size: 13px
+}
+.fb-edit-field-wrapper .fb-field-label {
+    font-weight: normal;
+    background: #eee;
+    padding: .75em;
+    color: #666;
+    font-size: 1.25em
+}
+.fb-edit-field-wrapper .fb-field-label .field-type {
+    margin-top: .5em;
+    display: block;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1em
+}
+.fb-edit-field-wrapper .fb-field-label .field-type:before {
+    content: 'Type: ';
+    color: #999
+}
+.fb-edit-field-wrapper .fb-field-label .fa.fa-arrow-right {
+    display: none
+}
+.fb-edit-field-wrapper .fb-edit-section-header {
+    border-bottom: 1px solid #ddd;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    clear: both;
+    font-weight: 700
+}
+.fb-edit-field-wrapper .js-add-option,
+.fb-edit-field-wrapper .js-remove-option {
+    padding: 3px 6px
+}
+.fb-edit-field-wrapper .fb-bottom-add {
+    margin-top: 8px
+}
+.fb-common-wrapper .fb-label-description {
+    margin-bottom: 10px
+}
+.fb-common-wrapper .fb-label-description input,
+.fb-common-wrapper .fb-label-description textarea {
+    width: 100%
+}
+.fb-common-wrapper .fb-label-description textarea {
+    min-height: 5em
+}
+.response-field-draggable-helper {
+    border: 1px dashed #ddd;
+    background: #eee
+}
+.response-field-text input.rf-size-small {
+    width: 100%
+}
+.response-field-text input.rf-size-medium {
+    width: 300px
+}
+.response-field-text input.rf-size-large {
+    width: 100%
+}
+.response-field-paragraph textarea.rf-size-small {
+    width: 200px;
+    min-height: 60px
+}
+.response-field-paragraph textarea.rf-size-medium {
+    width: 400px;
+    min-height: 100px
+}
+.response-field-paragraph textarea.rf-size-large {
+    width: 100%;
+    min-height: 200px
+}
+.response-field-address .street {
+    width: 100%
+}
+.response-field-address .city,
+.response-field-address .state,
+.response-field-address .zip,
+.response-field-address .country {
+    width: 49%;
+    float: left;
+    margin-right: 2%;
+}
+.response-field-address .state, .response-field-address .country {
+    margin-right: 0;
+}
+
+.response-field-address .country select {
+    width: 100%;
+    padding: 4px 0;
+    border-radius: 2%;
+}
+
+.response-field-date .month,
+.response-field-date .day,
+.response-field-date .year {
+    width: 50px
+}
+.response-field-time .hours,
+.response-field-time .minutes,
+.response-field-time .seconds {
+    width: 50px
+}
+.response-field-checkboxes .fb-option,
+.response-field-radio .fb-option {
+    margin-bottom: 5px;
+    display: inline-block
+}
+.response-field-website input {
+    width: 100%;
+}
+.dolars, .cents {
+    width: 48.6%;
+    margin-right: 2%;
+    float: left;
+}
+
+.cents {
+    margin-right: 0;
 }

@@ -23,7 +23,7 @@
 
 <section class="main_mentors">
 	<div class="sec_title">მენტორები
-		<a href=""><i class="fa fa-external-link"></i> ყველა მენტორი</a>
+		<a href="<?php echo site_url('mentors'); ?>"><i class="fa fa-external-link"></i> ყველა მენტორი</a>
 	</div>
 
 	<?php foreach ( $mentors as $m ) : ?>
@@ -37,21 +37,14 @@
 
 <section class="main_news">
 	<div class="sec_title">სიახლეები
-		<a href=""><i class="fa fa-external-link"></i> ყველა სიახლე</a>
+		<a href="<?php echo site_url('blog'); ?>"><i class="fa fa-external-link"></i> ყველა სიახლე</a>
 	</div>
 	
-
-			<div class="news_form">
-			<a href="">ცნობილი ფაქტია, რომ გვერდის წაკითხვად შიგთავსს შეუძლია მკითხველის ყურადღება მიიზიდოს და დიზაინის აღქმაში ხელი შეუშალოს</a>
-			<br/><span>11 იანვარი 2015</span>
-			</div><!-- /news_form -->
-			<div class="news_form">
-			<a href="">ცნობილი ფაქტია, რომ გვერდის წაკითხვად შიგთავსს შეუძლია მკითხველის ყურადღება მიიზიდოს და დიზაინის აღქმაში ხელი შეუშალოს</a>
-			<br/><span>11 იანვარი 2015</span>
-			</div><!-- /news_form -->
-			<div class="news_form">
-			<a href="">ცნობილი ფაქტია, რომ გვერდის წაკითხვად შიგთავსს შეუძლია მკითხველის ყურადღება მიიზიდოს და დიზაინის აღქმაში ხელი შეუშალოს</a>
-			<br/><span>11 იანვარი 2015</span>
-			</div><!-- /news_form -->
+<?php foreach ( $blogs as $b ) : ?>
+		<div class="news_form">
+			<a href=""><?php echo $b['title'] ?></a>
+			<br/><span><?php echo $b['date'] ?></span>
+		</div><!-- /news_form -->
+<?php endforeach; ?>
 
 </section>

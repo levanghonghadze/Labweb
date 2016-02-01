@@ -1,77 +1,42 @@
+<style>
+.wrapper { max-width: 1300px; }
+</style>
+  <script src="<?php echo base_url('assets/js/vendor.js'); ?>"></script>
+  <script src="<?php echo base_url('assets/js/pp.js'); ?>"></script>
+
+
 <div class="show_event">
-<div class="event_img" style="background: url(<?php echo base_url('uploads/' . $events['photo']) ?>) no-repeat center center / cover;">
-	<h1><?php echo $events['name'] ?></h1>
+<div class="event_img" style="background: url(<?php echo base_url('uploads/' . $show_events['photo']) ?>) no-repeat center center / cover, rgba(255,255,255,0.5);">
+	<h1><?php echo $show_events['event_name'] ?></h1>
 </div>
 
 <div class="event_overview">
-<?php echo $events['overview'] ?>
+<?php echo $show_events['overview'] ?>
 </div>
 
-<div class="lab_info">
-<?php echo $events['lab_name'] ?>
-<?php echo $events['lab_photo'] ?>
-</div>
+<div class="register_event">
+<button class="register_event_button">ივენთზე რეგისტრაცია</button>
+<div class="event_location"><i class="fa fa-map-marker"></i> <?php echo $show_events['location'] ?></div>
+<div class="event_date"><i class="fa fa-clock-o"></i> <?php echo $show_events['event_start_date'] ?></div>
+</div><!-- /register_event -->
+
 <section class="show_event_mentors">
 <h2>მენტორები</h2>
-<?php echo $events['mentor_name'] ?>
+  <?php foreach ( $se_mentors as $m ) : ?>
+  <div class="show_event_mentors_form">
+    <div class="mentors_info"><span><?php echo $m['mentor_name']; ?></span></div>
+    <div class="show_event_mentors_img" style="background: url(<?php echo base_url('uploads/' . $m['photo']); ?>) no-repeat center center / cover;"></div>
+  </div>
+  <?php endforeach; ?>
 </section>
 
-<div class="event_location"><i class="fa fa-map-marker"></i> <?php echo $events['location'] ?></div>
-<div class="event_date"><i class="fa fa-clock-o"></i> <?php echo $events['event_start_date'] ?></div>
+<!-- <div class="lab_info">
+<?php echo $events['lab_name'] ?>
+<?php echo $events['lab_photo'] ?>
+</div> -->
 
-<button>რეგისტრაცია</button>
+
 </div><!-- /show_event -->
 
-  <div class='fb-main'></div>
 
-  <script src="<?php echo base_url('assets/js/vendor.js'); ?>"></script>
-  <script src="<?php echo base_url('assets/js/formbuilder.js'); ?>"></script>
 
-  <script>
-    $(function(){
-      fb = new Formbuilder({
-        selector: '.fb-main',
-        bootstrapData: [
-          {
-            "label": "სახელი",
-            "field_type": "text",
-            "required": true,
-            "field_options": {},
-            "cid": "c1",
-            "name": "levani"
-          }, {
-            "label": "გვარი",
-            "field_type": "text",
-            "required": true,
-            "field_options": {},
-            "cid": "c1"
-          }, {
-            "label": "ელ-ფოსტა",
-            "field_type": "text",
-            "required": true,
-            "field_options": {},
-            "cid": "c1"
-          }, {
-            "label": "ტელეფონის ნომერი",
-            "field_type": "number",
-            "required": true,
-            "field_options": {},
-            "cid": "c1"
-          }, {
-          	"label":"სქესი",
-          	"field_type":"dropdown",
-          	"required":true,
-     		"field_options":{"options":[{"label":"ქალი",
-     		"checked":false},
-     		{"label":"კაცი","checked":false}],
-     		"include_blank_option":false},
-     		"cid":"c22"
-     	}
-        ]
-      });
-
-      fb.on('save', function(payload){
-        console.log(payload);
-      })
-    });
-  </script>
