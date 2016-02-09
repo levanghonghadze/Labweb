@@ -13,9 +13,37 @@
 <div class="event_overview">
 <?php echo $show_events['overview'] ?>
 </div>
+	
+	<div id="openModal" class="modalDialog">
+	    <div>	
+			<h2>
+			<span><?php echo $show_events['event_name'] ?></span>
+	    	<a href="#close" title="Close" class="close"><i class="fa fa-times"></i></a>
+	    	</h2>
+
+			<div class="popup_registration_form">
+			  	<div class='fb-main'></div>
+
+				  <script>
+				    $(function(){
+				      fb = new Formbuilder({
+				        selector: '.fb-main',
+				        bootstrapData: [
+				          
+<?php echo $show_events['form'] ?>
+				        ]
+				      });
+				      fb.on('save', function(payload){
+				        console.log(payload);
+				      })
+				    });
+				  </script>
+			</div><!-- /popup_registration_form -->
+	    </div>
+	</div><!-- /modalDialog -->
 
 <div class="register_event">
-<button class="register_event_button">ივენთზე რეგისტრაცია</button>
+<button class="register_event_button" onclick="window.location.href='#openModal'">ივენთზე რეგისტრაცია</button>
 <div class="event_location"><i class="fa fa-map-marker"></i> <?php echo $show_events['location'] ?></div>
 <div class="event_date"><i class="fa fa-clock-o"></i> <?php echo $show_events['event_start_date'] ?></div>
 </div><!-- /register_event -->

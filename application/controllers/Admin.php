@@ -4,6 +4,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Admin extends CI_Controller {
 	function __construct(){
         parent::__construct();
+		// if ($this->session->userdata('is_logged_in')) {
+		// $this->load->view('admin/views/add_event');
+		// } else {
+		// 	redirect('admin/login');
+		// }
         $this->load->model('Model');
 		$this->load->library('form_validation');
         $this->form_validation->set_error_delimiters('<div class="errors">', '</div>');
@@ -24,11 +29,7 @@ class Admin extends CI_Controller {
 	
 	public function add_event()
 	{
-		if ($this->session->userdata('is_logged_in')) {
 		$this->load->view('admin/views/add_event');
-		} else {
-			redirect('admin');
-		}
 
 		$this->load->view('admin/theme/footer');
 	}
@@ -101,7 +102,7 @@ class Admin extends CI_Controller {
 			$this->session->set_userdata($data);
 
 		    if($result){
-		    redirect('/admin/home');
+		    redirect('/admin/add_event');
 		    }else{
 		    redirect(base_url('/error'));
 	    	}

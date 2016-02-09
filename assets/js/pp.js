@@ -379,7 +379,7 @@
 
     BuilderView.prototype.setSortable = function() {
       var _this = this;
-      if (this.$responseFields.hasClass('ui-sortable')) {
+      if (this.$responseFields.hasClass('')) {
         this.$responseFields.sortable('destroy');
       }
       this.$responseFields.sortable({

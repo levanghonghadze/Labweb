@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.3.11
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 11, 2016 at 04:01 PM
--- Server version: 5.6.24
--- PHP Version: 5.6.8
+-- Хост: 127.0.0.1
+-- Время создания: Фев 09 2016 г., 14:21
+-- Версия сервера: 10.1.9-MariaDB
+-- Версия PHP: 7.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,28 +14,28 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `labweb`
+-- База данных: `labweb`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `blog`
+-- Структура таблицы `blog`
 --
 
-CREATE TABLE IF NOT EXISTS `blog` (
+CREATE TABLE `blog` (
   `id` int(11) NOT NULL,
   `title` varchar(255) CHARACTER SET utf8 NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `photo` varchar(255) CHARACTER SET utf8 NOT NULL,
   `text` text CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `blog`
+-- Дамп данных таблицы `blog`
 --
 
 INSERT INTO `blog` (`id`, `title`, `date`, `photo`, `text`) VALUES
@@ -44,12 +44,12 @@ INSERT INTO `blog` (`id`, `title`, `date`, `photo`, `text`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `events`
+-- Структура таблицы `events`
 --
 
-CREATE TABLE IF NOT EXISTS `events` (
+CREATE TABLE `events` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `event_name` varchar(255) CHARACTER SET utf8 NOT NULL,
   `photo` varchar(255) CHARACTER SET utf8 NOT NULL,
   `event_start_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `event_end_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -58,13 +58,13 @@ CREATE TABLE IF NOT EXISTS `events` (
   `form_id` varchar(255) CHARACTER SET utf8 NOT NULL,
   `lab_id` varchar(255) NOT NULL,
   `mentors_id` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `events`
+-- Дамп данных таблицы `events`
 --
 
-INSERT INTO `events` (`id`, `name`, `photo`, `event_start_date`, `event_end_date`, `location`, `overview`, `form_id`, `lab_id`, `mentors_id`) VALUES
+INSERT INTO `events` (`id`, `event_name`, `photo`, `event_start_date`, `event_end_date`, `location`, `overview`, `form_id`, `lab_id`, `mentors_id`) VALUES
 (10, 'Geolab Project', 'geolabu.jpg', '2016-01-11 10:18:41', '2016-01-12 04:00:00', 'Merab Aleksidze St.8 Tbilisi, Georgia', 'ჯეოლაბი წარმოადგენს მობილური და ვებ აპლიკაციების ლაბორატორიას. ეს არის სივრცე, რომელიც 24 საათის განმავლობაში ღიაა სხვადასხვა საინტერესო და ინოვაციური პროექტების განხორციელებისათვის. ჯეოლაბი აღჭურვილია უახლესი ტექნოლოგიებით და ყოველთვის მზადაა დაგეხმაროთ თქვენი კრეატიული აზროვნებისა და ტექნიკური უნარ–ჩვევების რეალიზებაში.\r\n\r\nჯეოლაბის განუყოფელი ნაწილია სასწავლო ცენტრი – ინფორმაციული ტექნოლოგიების ინსტიტუტი (ITI). აქ ნებისმიერ მსურველს 15 სპეციალობიდან შეუძლება აირჩიოს და 3 თვის განმავლობაში დაეუფლოს მისთვის საინტერესო პროფესიას. ჯეოლაბი საშუალებას გაძლევთ თავად შექმნათ პროგრამული პროდუქტი, შეიმუშაოთ ვებ-გვერდის ან მობილური აპლიკაციის დიზაინი, დააპროექტოთ და მართოთ პროგრამულ სფეროსთან დაკავშირებული პროექტები.\r\n', '1', '1', '71'),
 (11, 'Geolab Project', 'geolabu.jpg', '2016-01-12 03:30:00', '2016-01-12 04:00:00', 'Merab Aleksidze St.8 Tbilisi, Georgia', 'ჯეოლაბი წარმოადგენს მობილური და ვებ აპლიკაციების ლაბორატორიას. ეს არის სივრცე, რომელიც 24 საათის განმავლობაში ღიაა სხვადასხვა საინტერესო და ინოვაციური პროექტების განხორციელებისათვის. ჯეოლაბი აღჭურვილია უახლესი ტექნოლოგიებით და ყოველთვის მზადაა დაგეხმაროთ თქვენი კრეატიული აზროვნებისა და ტექნიკური უნარ–ჩვევების რეალიზებაში.\r\n\r\nჯეოლაბის განუყოფელი ნაწილია სასწავლო ცენტრი – ინფორმაციული ტექნოლოგიების ინსტიტუტი (ITI). აქ ნებისმიერ მსურველს 15 სპეციალობიდან შეუძლება აირჩიოს და 3 თვის განმავლობაში დაეუფლოს მისთვის საინტერესო პროფესიას. ჯეოლაბი საშუალებას გაძლევთ თავად შექმნათ პროგრამული პროდუქტი, შეიმუშაოთ ვებ-გვერდის ან მობილური აპლიკაციის დიზაინი, დააპროექტოთ და მართოთ პროგრამულ სფეროსთან დაკავშირებული პროექტები.\r\n', '', '', ''),
 (12, 'Geolab Project', 'geolabu.jpg', '2016-01-11 10:18:41', '2016-01-12 04:00:00', 'Merab Aleksidze St.8 Tbilisi, Georgia', 'ჯეოლაბი წარმოადგენს მობილური და ვებ აპლიკაციების ლაბორატორიას. ეს არის სივრცე, რომელიც 24 საათის განმავლობაში ღიაა სხვადასხვა საინტერესო და ინოვაციური პროექტების განხორციელებისათვის. ჯეოლაბი აღჭურვილია უახლესი ტექნოლოგიებით და ყოველთვის მზადაა დაგეხმაროთ თქვენი კრეატიული აზროვნებისა და ტექნიკური უნარ–ჩვევების რეალიზებაში.\r\n\r\nჯეოლაბის განუყოფელი ნაწილია სასწავლო ცენტრი – ინფორმაციული ტექნოლოგიების ინსტიტუტი (ITI). აქ ნებისმიერ მსურველს 15 სპეციალობიდან შეუძლება აირჩიოს და 3 თვის განმავლობაში დაეუფლოს მისთვის საინტერესო პროფესიას. ჯეოლაბი საშუალებას გაძლევთ თავად შექმნათ პროგრამული პროდუქტი, შეიმუშაოთ ვებ-გვერდის ან მობილური აპლიკაციის დიზაინი, დააპროექტოთ და მართოთ პროგრამულ სფეროსთან დაკავშირებული პროექტები.\r\n', '1', '1', '71');
@@ -72,59 +72,80 @@ INSERT INTO `events` (`id`, `name`, `photo`, `event_start_date`, `event_end_date
 -- --------------------------------------------------------
 
 --
--- Table structure for table `former`
+-- Структура таблицы `event_mentors`
 --
 
-CREATE TABLE IF NOT EXISTS `former` (
-  `id` int(11) NOT NULL,
-  `val1` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `val2` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `val3` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `val4` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+CREATE TABLE `event_mentors` (
+  `event_mentors_id` int(11) NOT NULL,
+  `mentor_id` varchar(255) NOT NULL,
   `event_id` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `former`
+-- Дамп данных таблицы `event_mentors`
 --
 
-INSERT INTO `former` (`id`, `val1`, `val2`, `val3`, `val4`, `event_id`) VALUES
-(1, 'vvnbvn', '', NULL, NULL, '71');
+INSERT INTO `event_mentors` (`event_mentors_id`, `mentor_id`, `event_id`) VALUES
+(1, '67\r\n', '12'),
+(2, '70', '12');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `forms`
+-- Структура таблицы `former`
 --
 
-CREATE TABLE IF NOT EXISTS `forms` (
+CREATE TABLE `former` (
   `id` int(11) NOT NULL,
-  `form` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `event_id` varchar(255) NOT NULL,
+  `former_form` text CHARACTER SET utf8mb4 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `forms`
+-- Дамп данных таблицы `former`
 --
 
-INSERT INTO `forms` (`id`, `form`) VALUES
-(1, 'თქვენი სახელი:<br>\r\n  <input type="text" name="val1" value="">\r\n  <br>\r\n  თქვენი გვარი:<br>\r\n  <input type="text" name="val2" value="">\r\n  <br><br>');
+INSERT INTO `former` (`id`, `event_id`, `former_form`) VALUES
+(1, '71', ''),
+(2, '71', ''),
+(3, '71', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `labs`
+-- Структура таблицы `forms`
 --
 
-CREATE TABLE IF NOT EXISTS `labs` (
+CREATE TABLE `forms` (
+  `id` int(11) NOT NULL,
+  `form` text NOT NULL,
+  `form_name` varchar(255) NOT NULL,
+  `event_id` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `forms`
+--
+
+INSERT INTO `forms` (`id`, `form`, `form_name`, `event_id`) VALUES
+(1, '{"label":"სახელი","field_type":"text","required":true,"field_options":{},"cid":"c1"},{"label":"გვარი","field_type":"text","required":true,"field_options":{},"cid":"c1"},{"label":"ელ-ფოსტა","field_type":"email","აუცილებელია":true,"field_options":{"description":"მაგ: geolab@geolab.edu.ge"},"cid":"c67"},{"label":"ტელეფონის ნომერი","field_type":"number","required":true,"field_options":{"description":"მაგ: 557 43 44 93"},"cid":"c1"},{"label":"სქესი","field_type":"dropdown","required":true,"field_options":{"options":[{"label":"ქალი","checked":false},{"label":"კაცი","checked":false}],"include_blank_option":false},"cid":"c22"},{"label":"ჩეკბოქსი","field_type":"checkboxes","აუცილებელია":true,"field_options":{"options":[{"label":"check1","checked":false},{"label":"check2","checked":false}],"description":"დამატებითი ტექსტი"},"cid":"c21"},{"label":"თარიღი","field_type":"date","აუცილებელია":true,"field_options":{"description":"ივენთის დაწყების თარიღი"},"cid":"c25"},{"label":"დრო","field_type":"time","აუცილებელია":true,"field_options":{"description":"ივენთის დაწყების დრო"},"cid":"c30"},{"label":"ვებსაიტი","field_type":"website","აუცილებელია":true,"field_options":{},"cid":"c39"},{"label":"ფასი","field_type":"price","აუცილებელია":true,"field_options":{"description":"არასაჭირო ფუნქცია მემგონი მარა იყოს რას მიშლის :D"},"cid":"c43"},{"label":"პარაგრაფი","field_type":"paragraph","აუცილებელია":true,"field_options":{"size":"large","description":"ესეც კაი რამეა"},"cid":"c47"},{"label":"რადიო","field_type":"radio","აუცილებელია":true,"field_options":{"options":[{"label":"რადიო 1","checked":false},{"label":"რადიო 2","checked":false}],"description":"ოპ ოპ ოპლა"},"cid":"c55"},{"label":"ჰოპა თუ ოპა","field_type":"dropdown","აუცილებელია":true,"field_options":{"options":[{"label":"ჰოპა","checked":false},{"label":"ოპა","checked":false}],"include_blank_option":false,"description":"მოასელექთე "},"cid":"c59"},{"label":"ნამბერ","field_type":"number","აუცილებელია":true,"field_options":{"description":"ჰოო, აქ იწერება მარტო ციფრები","units":"ჰოი","min":"","integer_only":false},"cid":"c63"},{"label":"მისამართი","field_type":"address","აუცილებელია":true,"field_options":{},"cid":"c71"}', 'geolab project form', '12');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `labs`
+--
+
+CREATE TABLE `labs` (
   `id` int(11) NOT NULL,
   `lab_name` varchar(255) CHARACTER SET utf8 NOT NULL,
   `lab_photo` varchar(255) NOT NULL,
   `lab_address` varchar(255) CHARACTER SET utf8 NOT NULL,
   `lab_phone` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `labs`
+-- Дамп данных таблицы `labs`
 --
 
 INSERT INTO `labs` (`id`, `lab_name`, `lab_photo`, `lab_address`, `lab_phone`) VALUES
@@ -133,18 +154,18 @@ INSERT INTO `labs` (`id`, `lab_name`, `lab_photo`, `lab_address`, `lab_phone`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mentors`
+-- Структура таблицы `mentors`
 --
 
-CREATE TABLE IF NOT EXISTS `mentors` (
+CREATE TABLE `mentors` (
   `id` int(11) NOT NULL,
   `mentor_name` varchar(255) CHARACTER SET utf8 NOT NULL,
   `info` varchar(255) CHARACTER SET utf8 NOT NULL,
   `photo` varchar(255) CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `mentors`
+-- Дамп данных таблицы `mentors`
 --
 
 INSERT INTO `mentors` (`id`, `mentor_name`, `info`, `photo`) VALUES
@@ -152,145 +173,157 @@ INSERT INTO `mentors` (`id`, `mentor_name`, `info`, `photo`) VALUES
 (68, 'Priit Salumaa', 'Co-Founder of Mooncascade and Garage48', '13928_10200766204654812_1301722864_n.jpg'),
 (69, 'Helen Kokk', 'UI/UX expert and Graphic Designer @ Made By', 'Helen.jpg'),
 (70, 'Jurgis Orups', 'CTO @ Clusterpoint', 'jurgis.jpg'),
-(71, 'Kärt Ojavee', 'textile designer at KO! and KAUN, co-founder of SymbiosisO', 'tal-urb-p63-1.jpg');
+(71, 'Kärt Ojavee', 'textile designer at KO! and KAUN, co-founder of SymbiosisO', 'tal-urb-p63-1.jpg'),
+(72, 'levan gongadze', 'geolab', '086.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pages`
+-- Структура таблицы `pages`
 --
 
-CREATE TABLE IF NOT EXISTS `pages` (
+CREATE TABLE `pages` (
   `id` int(11) NOT NULL,
   `page_name` varchar(255) CHARACTER SET utf8 NOT NULL,
   `page_url` varchar(255) NOT NULL,
   `page_text` text CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pages`
+-- Дамп данных таблицы `pages`
 --
 
 INSERT INTO `pages` (`id`, `page_name`, `page_url`, `page_text`) VALUES
-(1, 'ჩვენ შესახებ\r\n', 'about_us', 'People are often afraid to start their own project or business. Common problems include lack of know-how and co-founders, lack of money, unknown risks etc. Garage48 is here to change that mindset and show that it''s all about positive "let''s do it" attitud');
+(1, 'ჩვენ შესახებ\r\n', 'about_us', 'არსებული პროექტი წარმოადგენს Geolab-ის სტუდენტის საკურსო ნაშრომს, რომელიც ფინალურ ეტაპზე შეასრულა. კონკრეტულად არის პლატფორმა, რომელიც შესაძლებლობას იძლევა ღონისძიებებისთვის შეიქმნას სარეგისტრაციო ფორმები. ამის გარდა შესაძლებელია ღონისძიებების დათვალიერება და ინფორმაციის მიღება.');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Структура таблицы `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
+CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` text NOT NULL,
   `password` varchar(50) NOT NULL,
   `email` varchar(255) NOT NULL,
   `lab_id` varchar(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
+-- Дамп данных таблицы `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `lab_id`) VALUES
 (1, 'levani', 'b7ad03d0f70e378eff4df7d35d6e8f6effa64b3d', 'levani@gmail.com', '1');
 
 --
--- Indexes for dumped tables
+-- Индексы сохранённых таблиц
 --
 
 --
--- Indexes for table `blog`
+-- Индексы таблицы `blog`
 --
 ALTER TABLE `blog`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `events`
+-- Индексы таблицы `events`
 --
 ALTER TABLE `events`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `former`
+-- Индексы таблицы `event_mentors`
+--
+ALTER TABLE `event_mentors`
+  ADD PRIMARY KEY (`event_mentors_id`);
+
+--
+-- Индексы таблицы `former`
 --
 ALTER TABLE `former`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `forms`
+-- Индексы таблицы `forms`
 --
 ALTER TABLE `forms`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `labs`
+-- Индексы таблицы `labs`
 --
 ALTER TABLE `labs`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mentors`
+-- Индексы таблицы `mentors`
 --
 ALTER TABLE `mentors`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pages`
+-- Индексы таблицы `pages`
 --
 ALTER TABLE `pages`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Индексы таблицы `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT for table `blog`
+-- AUTO_INCREMENT для таблицы `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `events`
+-- AUTO_INCREMENT для таблицы `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
--- AUTO_INCREMENT for table `former`
+-- AUTO_INCREMENT для таблицы `event_mentors`
+--
+ALTER TABLE `event_mentors`
+  MODIFY `event_mentors_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT для таблицы `former`
 --
 ALTER TABLE `former`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `forms`
+-- AUTO_INCREMENT для таблицы `forms`
 --
 ALTER TABLE `forms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `labs`
+-- AUTO_INCREMENT для таблицы `labs`
 --
 ALTER TABLE `labs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `mentors`
+-- AUTO_INCREMENT для таблицы `mentors`
 --
 ALTER TABLE `mentors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=72;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 --
--- AUTO_INCREMENT for table `pages`
+-- AUTO_INCREMENT для таблицы `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

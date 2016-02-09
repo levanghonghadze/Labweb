@@ -8,6 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
 		<link href='<?php echo base_url('assets/style/styles.css'); ?>' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<script src="<?php echo base_url('assets/js/index.js'); ?>"></script>
     </head>
 	
 <body>

@@ -13,8 +13,9 @@ class Main extends CI_Controller {
 	
 	public function index()
 	{
-
-		$this->load->view('pages/main');
+		$this->db->limit('5');
+		$data['mentors'] = $this->model->select_mentors();
+		$this->load->view('pages/main', $data);
 		$this->load->view('theme/footer');
 	}
 	

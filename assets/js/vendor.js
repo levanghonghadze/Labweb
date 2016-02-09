@@ -10437,7 +10437,7 @@ $.ui.plugin.add("draggable", "connectToSortable", {
 			uiSortable = $.extend({}, ui, { item: inst.element });
 		inst.sortables = [];
 		$(o.connectToSortable).each(function() {
-			var sortable = $.data(this, "ui-sortable");
+			var sortable = $.data(this, "");
 			if (sortable && !sortable.options.disabled) {
 				inst.sortables.push({
 					instance: sortable,
@@ -10525,7 +10525,7 @@ $.ui.plugin.add("draggable", "connectToSortable", {
 					//Now we fake the start of dragging for the sortable instance,
 					//by cloning the list group item, appending it to the sortable and using it as inst.currentItem
 					//We can then fire the start event of the sortable with our passed browser event, and our own helper (so it doesn't create a new one)
-					this.instance.currentItem = $(that).clone().removeAttr("id").appendTo(this.instance.element).data("ui-sortable-item", true);
+					this.instance.currentItem = $(that).clone().removeAttr("id").appendTo(this.instance.element).data("", true);
 					this.instance.options._helper = this.instance.options.helper; //Store helper option to later restore it
 					this.instance.options.helper = function() { return ui.helper[0]; };
 
@@ -11267,7 +11267,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 
 		var o = this.options;
 		this.containerCache = {};
-		this.element.addClass("ui-sortable");
+		this.element.addClass("");
 
 		//Get the items
 		this.refresh();
@@ -11288,7 +11288,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 
 	_destroy: function() {
 		this.element
-			.removeClass("ui-sortable ui-sortable-disabled");
+			.removeClass("");
 		this._mouseDestroy();
 
 		for ( var i = this.items.length - 1; i >= 0; i-- ) {
