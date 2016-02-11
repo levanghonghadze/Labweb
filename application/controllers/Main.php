@@ -15,6 +15,8 @@ class Main extends CI_Controller {
 	{
 		$this->db->limit('5');
 		$data['mentors'] = $this->model->select_mentors();
+		$this->db->limit('3');
+		$data['events'] = $this->model->select_events();
 		$this->load->view('pages/main', $data);
 		$this->load->view('theme/footer');
 	}

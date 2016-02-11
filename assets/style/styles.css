@@ -183,6 +183,28 @@ body, html {
     left: 10px;
 }
 
+.shov_event_leftbar {
+    float: left;
+    width: 19%;
+    background: #fff;
+    overflow: hidden;
+}
+
+.shov_event_leftbar h1 {
+    padding: 3%;
+    color: #666666;
+    font: 16px 'bpg_quadrosquare_mtavruli_2009';
+    background: #fafafa;
+    border: solid #eaeaea;
+    border-width: 1px 0 1px 0;
+}
+
+.show_event {
+    width: 80%;
+    height: 100%;
+    float: right;
+}
+
 .show_event h1 {
     color: #fff;
     font: bold 3.0vh 'arial';    
@@ -199,22 +221,29 @@ body, html {
     padding: 1%;
     background: #fff;
     color: #656565;
+    margin-top: 2%;
 }
 
 .show_event_mentors {
     width: 100%;
     background: #fff;
+    text-align: center;
 }
 
 .show_event_mentors h2 {
+    background: #fafafa;
+    border: solid #eaeaea;
+    border-width: 1px 0 1px 0;
     font: 20px 'bpg_quadrosquare_mtavruli_2009';
     padding: 1%;
     color: #4f4f4f;
+    text-align: left;
 }
 
 .show_event_mentors_form {
-    float: left;
+    display: inline-block;
     position: relative;
+    margin: 1% 0 1% 1%;
 }
 
 .show_event_mentors_img {
@@ -236,6 +265,12 @@ body, html {
     top: 0;
     text-align: center;
     padding-top: 10px;
+}
+
+.agenda { 
+    color: #808080;
+    font: 13px 'bpg_arial_2009';
+    padding: 3%;
 }
 
 section {
@@ -391,10 +426,10 @@ section {
 }
 
 .register_event {
-    background: #fafafa;
-    border: solid #f2f2f2;
-    border-width: 1px 0 1px 0;
+    background: #fff;
+    border-radius: 2px 4px 2px;
     overflow: hidden;
+    box-shadow: 0px 0px 2px #CECECE;
 }
 
 .register_event > .event_location {
@@ -452,7 +487,6 @@ section {
 }
 
 .popup_registration_form:hover {
-
     overflow-y: scroll;
 }
 
@@ -519,9 +553,6 @@ section {
     margin-top: 0;
     padding-top: 2%;
   }
-  .main_mentors_form {
-    width: 50%;
-  }
   .main_mentors_form:last-child {
     display: none;
   }
@@ -529,7 +560,44 @@ section {
     width: 96%;
   }
   .mentors_form {
-    width: 30%;
+    width: 20%;
+  }
+  .main_mentors_form {
+    width: 33.3%;
+  }
+}
+@media (max-width: 450px) {
+  .mentors_form {
+    width: 96%;
+  }
+  .main_mentors_form {
+    width: 100%;
+  }
+  .event_form {
+    width: 96%;
+  }
+  .blog_img {
+    width: 98%;
+  }
+  .blog_form h1 {
+    font-size: 14px;
+    padding: 5px 0 0 5px;
+  }
+  .blog_text {
+    font-size: 12px;
+    padding: 5px 0 0 5px;
+  }
+  .shov_event_leftbar {
+    display: none;
+  }
+  .show_event {
+    width: 100%;
+  }
+  .register_event_button {
+    width: 98%;
+  }
+  .register_event > .event_location {
+    font-size: 14px;
   }
 }
 

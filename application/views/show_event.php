@@ -1,17 +1,31 @@
 <style>
-.wrapper { max-width: 1300px; }
+.wrapper { margin: 2% 2% 0 2%; }
 </style>
   <script src="<?php echo base_url('assets/js/vendor.js'); ?>"></script>
   <script src="<?php echo base_url('assets/js/pp.js'); ?>"></script>
 
+<div class="shov_event_leftbar">
+<h1>განრიგი</h1>
+<div class="agenda">
+	<p><?php echo nl2br($show_events['agenda']) ?></p>
+</div>
+<h1>ორაგნიზატორები</h1>
+<h1>სიახლეები ივენთზე</h1>
+</div>
 
 <div class="show_event">
 <div class="event_img" style="background: url(<?php echo base_url('uploads/' . $show_events['photo']) ?>) no-repeat center center / cover, rgba(255,255,255,0.5);">
 	<h1><?php echo $show_events['event_name'] ?></h1>
 </div>
 
+<div class="register_event">
+<button class="register_event_button" onclick="window.location.href='#openModal'">ივენთზე რეგისტრაცია</button>
+<div class="event_location"><i class="fa fa-map-marker"></i> <?php echo $show_events['location'] ?></div>
+<div class="event_date"><i class="fa fa-clock-o"></i> <?php echo $show_events['event_start_date'] ?></div>
+</div><!-- /register_event -->
+
 <div class="event_overview">
-<?php echo $show_events['overview'] ?>
+<?php echo nl2br($show_events['overview']) ?>
 </div>
 	
 	<div id="openModal" class="modalDialog">
@@ -29,8 +43,7 @@
 				      fb = new Formbuilder({
 				        selector: '.fb-main',
 				        bootstrapData: [
-				          
-<?php echo $show_events['form'] ?>
+							<?php echo $show_events['form'] ?>
 				        ]
 				      });
 				      fb.on('save', function(payload){
@@ -41,12 +54,6 @@
 			</div><!-- /popup_registration_form -->
 	    </div>
 	</div><!-- /modalDialog -->
-
-<div class="register_event">
-<button class="register_event_button" onclick="window.location.href='#openModal'">ივენთზე რეგისტრაცია</button>
-<div class="event_location"><i class="fa fa-map-marker"></i> <?php echo $show_events['location'] ?></div>
-<div class="event_date"><i class="fa fa-clock-o"></i> <?php echo $show_events['event_start_date'] ?></div>
-</div><!-- /register_event -->
 
 <section class="show_event_mentors">
 <h2>მენტორები</h2>
