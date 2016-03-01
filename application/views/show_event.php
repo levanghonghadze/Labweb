@@ -1,8 +1,6 @@
 <style>
 .wrapper { margin: 2% 2% 0 2%; }
 </style>
-  <script src="<?php echo base_url('assets/js/vendor.js'); ?>"></script>
-  <script src="<?php echo base_url('assets/js/pp.js'); ?>"></script>
 
 <div class="shov_event_leftbar">
 <h1>განრიგი</h1>
@@ -10,7 +8,11 @@
 	<p><?php echo nl2br($show_events['agenda']) ?></p>
 </div>
 <h1>ორაგნიზატორები</h1>
+<img src="<?php echo base_url('uploads/' . $show_events['lab_photo']) ?>" alt="" />
 <h1>სიახლეები ივენთზე</h1>
+  <?php foreach ( $se_news as $n ) : ?>
+  	<a href="<?php echo $n['id']; ?>" class="se_news"><?php echo $n['title']; ?></a>
+  <?php endforeach; ?>
 </div>
 
 <div class="show_event">
@@ -36,33 +38,31 @@
 	    	</h2>
 
 			<div class="popup_registration_form">
-			  	<div class='fb-main'></div>
-
-				  <script>
-				    $(function(){
-				      fb = new Formbuilder({
-				        selector: '.fb-main',
-				        bootstrapData: [
-							<?php echo $show_events['form'] ?>
-				        ]
-				      });
-				      fb.on('save', function(payload){
-				        console.log(payload);
-				      })
-				    });
-				  </script>
+			  	<form class="get_event_form" action="<?php echo site_url('main/get_event'); ?>" method="post">
+			  		<?php echo $show_events['form'] ?>
+            		<button class="register_event_button" style="margin-right: 0;" type="submit">რეგისტრაცია</button>
+			  	</form>
 			</div><!-- /popup_registration_form -->
 	    </div>
 	</div><!-- /modalDialog -->
 
 <section class="show_event_mentors">
-<h2>მენტორები</h2>
+<h2>სპიკერები</h2>
   <?php foreach ( $se_mentors as $m ) : ?>
   <div class="show_event_mentors_form">
     <div class="mentors_info"><span><?php echo $m['mentor_name']; ?></span></div>
     <div class="show_event_mentors_img" style="background: url(<?php echo base_url('uploads/' . $m['photo']); ?>) no-repeat center center / cover;"></div>
   </div>
   <?php endforeach; ?>
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-comments" data-href="<?php echo base_url('main/show_blog') . '/' . $show_events['id'] ?>" data-width="100%" data-numposts="10"></div>
 </section>
 
 <!-- <div class="lab_info">
@@ -75,3 +75,5 @@
 
 
 
+
+  <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('assets/form/form-builder.min.css'); ?>">

@@ -1,6 +1,6 @@
 <section class="admin_section">
 	<h1>ჩემი ივენთები</h1>
-	
+    <?php if(!empty($message)) echo $message;?>
 <div class="admin_event_form" style="margin: 20px 0 0 0; border: radius: none; padding: 1% 2%;">
 	<h2>ივენთის სახელი</h2>
 

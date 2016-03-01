@@ -30,6 +30,14 @@ class Model extends CI_Model {
          return $query->result_array();
     }
 
+    public function news_events($id){
+         $this->db->select('events.*, blog.*');
+         $this->db->join('events', 'events.id = blog.event_id');
+         $this->db->where('blog.event_id', $id);
+         $query = $this->db->get('blog');
+         return $query->result_array();
+    }
+
     public function select_blog()
     {
         $this->db->select('*');
@@ -39,74 +47,13 @@ class Model extends CI_Model {
         return $query->result_array();
     }
 
-    public function login(){
-    $this->db->where('username',$this->input->post('username',TRUE));
-                $this->db->where('password', sha1($this->input->post('password',TRUE)));
-                $countuser = $this->db->count_all_results('users');
-                if($countuser > 0 ){
-                        $rows=$this->db->get('users')->row_array();
-                        return TRUE;
-                }
-                return FALSE;
-    }
-
-    public function remove($id)
-    {
-        $this->db->where('id', $id);
-        $this->db->delete('mentors');
-    }
-
-    public function edit($id)
+    public function select_labs()
     {
         $this->db->select('*');
-        $this->db->from('mentors');
-        $this->db->where('id', $id);
-    }
-
-    public function check_event($image)
-    {
-
-        if ($this->form_validation->run() === FALSE) {
-            $this->load->view('admin/views/add_event');
-        }else{
-            $event_name = $this->input->POST('event_name');
-            $event_start_date = $this->input->POST('event_start_date');
-            $event_end_date = $this->input->POST('event_end_date');
-            $event_location = $this->input->POST('event_location');
-            $event_overview = $this->input->POST('event_overview');
-
-            $this->db->set('event_name', $event_name);
-            $this->db->set('event_start_date', $event_start_date);
-            $this->db->set('event_end_date', $event_end_date);
-            $this->db->set('location', $event_location);
-            $this->db->set('overview', $event_overview);
-            $this->db->set('photo', $image);
-            $this->db->insert('events');
-        }
-    }
-
-    public function check_mentor($image)
-    {
-
-        if ($this->form_validation->run() === FALSE) {
-            $this->load->view('admin/views/add_mentors');
-        }else{
-            $mentor_name = $this->input->POST('mentor_name');
-            $mentor_info = $this->input->POST('mentor_info');
-
-            $this->db->set('mentor_name', $mentor_name);
-            $this->db->set('info', $mentor_info);
-            $this->db->set('photo', $image);
-            $this->db->insert('mentors');
-        }
-        if ($this->form_validation->run()) {
-            $this->load->model('model');
-            $data['mentors'] = $this->model->select_mentors();
-            $data['updated'] = '<div class="updated"><i class="fa fa-check"></i> მენტორი წარმატებით დაემატა.</div>';
-
-            $this->load->view('admin/mentors', $data);
-            $this->load->view('admin/theme/footer');
-        }
+        $this->db->from('labs');
+        $this->db->order_by("id", "DESC");
+        $query = $this->db->get();
+        return $query->result_array();
     }
 
     public function get_event()
@@ -127,10 +74,9 @@ class Model extends CI_Model {
 
     public function select_forms()
     {
-        $this->db->select('forms.*, events.event_name');
+        $this->db->select('forms.*');
         $this->db->from('forms');
         $this->db->order_by("forms.id", "DESC");
-        $this->db->join('events', 'events.id = forms.event_id');
         $query = $this->db->get();
         return $query->result_array();
     }

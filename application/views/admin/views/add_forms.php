@@ -1,4 +1,4 @@
-<section class="admin_section">
+<!-- <section class="admin_section">
 
   <link rel="stylesheet" href="<?php echo base_url('assets/style/vendor.css'); ?>" />
   <link rel="stylesheet" href=" <?php echo base_url('assets/style/formbuilder.css'); ?>" />
@@ -66,4 +66,54 @@
     });
   </script>
 
-</section>
+</section> -->
+
+  <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('assets/form/form-builder.min.css'); ?>">
+
+
+
+<section class="admin_section">
+<h1>ფორმის შექმნა</h1>
+    <div id="main_content_wrap" class="outer">
+        
+        <div class="build-form">
+          <form action="">
+            <textarea name="form-builder-template" id="form-builder-template" cols="30" rows="10"></textarea>
+          </form>
+          <br style="clear:both">
+        </div>
+        <div class="render-form">
+          <form  action="<?php echo site_url('admin/insert_form'); ?>" method="post">
+            <textarea style="display: none;" name="form" cols="30" rows="10" id="rendered-form"></textarea>
+            <button class="button" style="width: 100%; margin: 0 2%; padding: 10px 0;" type="submit">ფორმის შექმნა</button>
+          </form>
+          
+            <button type="submit" id="render-form-button" class="btn btn-primary">Render form</button>
+          </div>
+        <br style="clear:both">
+        
+    </div>
+  </div>
+  </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <!-- Only include on form edit page -->
+  <script src="<?php echo base_url('assets/form/form-builder.min.js'); ?>"></script>
+  <!-- Only include on form render page -->
+  <script src="<?php echo base_url('assets/form/form-render.min.js'); ?>"></script>
+  <script>
+  jQuery(document).ready(function($) {
+    'use strict';
+    var template = document.getElementById('form-builder-template'),
+      formContainer = document.getElementById('rendered-form'),
+      renderBtn = document.getElementById('render-form-button');
+    $(template).formBuilder();
+
+    $(renderBtn).click(function(e) {
+      e.preventDefault();
+      $(template).formRender({
+        container: $(formContainer)
+      });
+    });
+  });
+  </script>

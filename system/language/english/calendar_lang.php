@@ -6,7 +6,7 @@
  *
  * This content is released under the MIT License (MIT)
  *
- * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+ * Copyright (c) 2014 - 2016, British Columbia Institute of Technology
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +28,10 @@
  *
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2016, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
- * @link	http://codeigniter.com
+ * @link	https://codeigniter.com
  * @since	Version 1.0.0
  * @filesource
  */
@@ -57,7 +57,7 @@ $lang['cal_tuesday'] = 'Tuesday';
 $lang['cal_wednesday'] = 'Wednesday';
 $lang['cal_thursday'] = 'Thursday';
 $lang['cal_friday'] = 'Friday';
-$lang['cal_saturday'] = 'Saturday';
+$lang['cal_saturday'] = 'შაფათი';
 $lang['cal_jan'] = 'Jan';
 $lang['cal_feb'] = 'Feb';
 $lang['cal_mar'] = 'Mar';
@@ -81,4 +81,4 @@ $lang['cal_august'] = 'August';
 $lang['cal_september'] = 'September';
 $lang['cal_october'] = 'October';
 $lang['cal_november'] = 'November';
-$lang['cal_december'] = 'December';
+$lang['cal_december'] = 'დეკემბერი';

@@ -22,7 +22,7 @@
 </section>
 
 <section class="main_mentors">
-	<div class="sec_title">მენტორები
+	<div class="sec_title">სპიკერები
 		<a href="<?php echo site_url('mentors'); ?>"><i class="fa fa-external-link"></i> ყველა მენტორი</a>
 	</div>
 

@@ -13,7 +13,7 @@ class Main extends CI_Controller {
 	
 	public function index()
 	{
-		$this->db->limit('5');
+		$this->db->limit('6');
 		$data['mentors'] = $this->model->select_mentors();
 		$this->db->limit('3');
 		$data['events'] = $this->model->select_events();
@@ -40,6 +40,18 @@ class Main extends CI_Controller {
 		$this->load->view('theme/footer');
 	}
 	
+	public function show_blog($id)
+	{
+        $this->db->select('*');
+        $this->db->from('blog');
+        $this->db->where('blog.id', $id);
+        $blog = $this->db->get()->row_array();
+        $data['show_blog'] = $blog;
+
+		$this->load->view('show_blog', $data);
+		$this->load->view('theme/footer');
+	}
+	
 	public function events()
 	{
 		$this->load->view('pages/events');
@@ -48,13 +60,15 @@ class Main extends CI_Controller {
 	
 	public function show_event($id)
 	{
-        $this->db->select('events.*, forms.*');
+        $this->db->select('events.*, forms.*, labs.*');
         $this->db->from('events');
         $this->db->where('events.id', $id);
         $this->db->join('forms', 'forms.id = events.form_id');
+        $this->db->join('labs', 'labs.id = events.lab_id');
         $event = $this->db->get()->row_array();
         $data['show_events'] = $event;
 		$data['se_mentors'] = $this->model->mentor_events($id);
+		$data['se_news'] = $this->model->news_events($id);
 
 		$this->load->view('show_event', $data);
 		$this->load->view('theme/footer');

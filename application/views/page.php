@@ -1,5 +1,5 @@
 <style>
-.wrapper { max-width: 1300px; height: 100%;}
+.wrapper { max-width: 100%; margin: 0 2%; height: 100%;}
 </style>
 
 <div class="pages">

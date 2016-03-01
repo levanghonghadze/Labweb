@@ -116,7 +116,7 @@ body, html {
 }
 
 .event_location {
-    font: 3.0vh 'arial';
+    font: 2.5vh 'arial';
     padding-top: 10px;
     color: #666666;
 }
@@ -151,12 +151,12 @@ body, html {
     border-radius: 10px;
     background: #F7F7F7;
     width: 17.6%;
-    height: 30vh;
+    height: 40vh;
     position: relative;
 }
 
 .mentors_form h1 {
-    font: 20px 'arial';
+    font: 1vw 'bpg_quadrosquare_mtavruli_2009';
     color: #fff;
     z-index: 100;
     padding-top: 20px;
@@ -171,7 +171,7 @@ body, html {
     right:0;
     left: 0;
     color: #fff;
-    font: 14px 'arial';
+    font: 1vw 'bpg_arial_2009';
     height: 100%;
     background: linear-gradient(to bottom, rgba(140,19,181,0) -1%,rgba(140,19,181,0.2) 0%,rgba(140,19,181,0.4) 1%,rgba(140,19,181,0.4) 100%);
 }
@@ -197,6 +197,18 @@ body, html {
     background: #fafafa;
     border: solid #eaeaea;
     border-width: 1px 0 1px 0;
+}
+
+.shov_event_leftbar img {
+    width: 96%;
+    margin: 2%;
+}
+
+.se_news {
+    font: 14px 'bpg_arial_2009';
+    padding: 5px;
+    color: #515151;
+    display: block;
 }
 
 .show_event {
@@ -280,6 +292,7 @@ section {
 .sec_title {
     font: 30px 'bpg_quadrosquare_mtavruli_2009';
     padding: 2% 2% 0 2%;
+    color: #383838;
 }
 
 .main_event_form {
@@ -346,8 +359,8 @@ section {
 
 .main_mentors_form {
     border-radius: 0;
-    width: 20%;
-    height: 25vh;
+    width: 16.6%;
+    height: 40vh;
     margin: 0;
 }
 
@@ -381,7 +394,7 @@ section {
 }
 
 .blog_form h1 {
-    font: bold 20px 'bpg_arial_2009';
+    font: bold 1.5vw 'bpg_arial_2009';
     padding-top: 1%;
     color: #2b2b2b;
 }
@@ -395,24 +408,43 @@ section {
 .blog_img {
     width: 20%;
     float: left;
-    height: 20vh;
+    height: 18vw;
     margin: 1%;
     border-radius: 4px;
 }
 
 .blog_text {
-    font: 15px 'bpg_arial_2009';
+    font: 1.3vw 'bpg_arial_2009';
+    height: 11vw;
     padding-top: 0.5%;
+    overflow: hidden;
+    color: #878787;
 }
 
 .readmore {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    font: bold 16px 'arial';
-    color: #4b4b4b;
+    font: 1vw 'bpg_arial_2009';
+    background: #7f4b90;
+    margin: 10px;
+    color: #fff;
+    float: right;
+    padding: 10px;
 }
 
+.view_blog > .blog_text {
+    height: auto;
+}
+
+.view_blog h2 {
+    font: bold 1.5vw 'bpg_arial_2009';
+    padding-top: 1%;
+    color: #2b2b2b;
+}
+
+.view_blog h2 span {
+    font-size: 12px;
+    color: #878787;
+    font-weight: normal;
+}
 .register_event_button {
     background: linear-gradient(to bottom, #7f4b90 0%,#794689 42%,#70407f 100%);
     border: none;
@@ -609,6 +641,10 @@ section {
 
 
 /*--forms--*/
+
+.save  {
+    font: 14px 'bpg_arial_2009' !important;
+}
 
 .section > .button {
     padding-left: 20px;

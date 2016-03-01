@@ -18,8 +18,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <li><a href="<?php echo site_url('/'); ?>">მთავარი გვერდი</a></li>
 <li><a href="<?php echo site_url('about'); ?>">ჩვენს შესახებ</a></li>
 <li><a href="<?php echo site_url('events'); ?>">ივენთები</a></li>
-<li><a href="<?php echo site_url('mentors'); ?>">მენტორები</a></li>
-<li><a href="<?php echo site_url('blog'); ?>">ბლოგი</a></li>
+<li><a href="<?php echo site_url('speakers'); ?>">სპიკერები</a></li>
+<li><a href="<?php echo site_url('news'); ?>">სიახლეები</a></li>
 <li style="float: right;"><a href="<?php echo site_url('/admin'); ?>">ADMIN</a></li>
 </ul>
 

@@ -10,4 +10,3 @@ $(document).ready(function() {
     $(this).siblings().next(".drop_ul").slideUp(200);
   });
 });
-
