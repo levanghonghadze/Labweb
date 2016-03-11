@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Main extends CI_Controller {
 	function __construct(){
 		parent::__construct();
+		$this->lang->load('ge', 'georgian');
 		$this->load->model('model');
 		$data['events'] = $this->model->select_events();
 		$data['mentors'] = $this->model->select_mentors();
@@ -33,22 +34,29 @@ class Main extends CI_Controller {
 		$this->load->view('theme/footer');
 	}
 	
-	public function blog()
+	public function news()
 	{
-
-		$this->load->view('pages/blog');
+		$this->load->view('pages/news');
 		$this->load->view('theme/footer');
 	}
 	
-	public function show_blog($id)
+	public function show_news($id = NULL)
 	{
+		$check_id = $this->db->select('id')->from('blog')->where('id',$id)->get();
+
         $this->db->select('*');
         $this->db->from('blog');
         $this->db->where('blog.id', $id);
         $blog = $this->db->get()->row_array();
         $data['show_blog'] = $blog;
 
+        if ($check_id->num_rows() > 0 ) {
 		$this->load->view('show_blog', $data);
+		} else {
+			$data['message'] = $this->lang->line('page_not_found');
+			$this->load->view('errors/message', $data);
+
+		}
 		$this->load->view('theme/footer');
 	}
 	
@@ -58,8 +66,10 @@ class Main extends CI_Controller {
 		$this->load->view('theme/footer');
 	}
 	
-	public function show_event($id)
+	public function show_event($id = NULL)
 	{
+		$check_id = $this->db->select('id')->from('events')->where('id',$id)->get();
+
         $this->db->select('events.*, forms.*, labs.*');
         $this->db->from('events');
         $this->db->where('events.id', $id);
@@ -70,7 +80,12 @@ class Main extends CI_Controller {
 		$data['se_mentors'] = $this->model->mentor_events($id);
 		$data['se_news'] = $this->model->news_events($id);
 
+		if ($check_id->num_rows() > 0 ) {
 		$this->load->view('show_event', $data);
+		} else { 
+			$data['message'] = $this->lang->line('page_not_found');;
+			$this->load->view('errors/message', $data);
+		}
 		$this->load->view('theme/footer');
 	}
 	
@@ -86,14 +101,3 @@ class Main extends CI_Controller {
 		var_dump($_POST);
 	}
 }
-
-// var_dump($_POST);
-// die();
-// $result = array();
-// foreach ( $_POST[] as $v){
-// 	foreach ($_POST[$v] as $k => $val){
-// 		$result[$k][] = $val;
-// 	}
-// }
-// json_decode($result);
-// $_POST['text']

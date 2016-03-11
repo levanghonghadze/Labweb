@@ -56,6 +56,15 @@ class Model extends CI_Model {
         return $query->result_array();
     }
 
+    public function select_forms()
+    {
+        $this->db->select('forms.*');
+        $this->db->from('forms');
+        $this->db->order_by("forms.id", "DESC");
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
     public function get_event()
     {
         $val1 = $this->input->POST('val1');
@@ -70,14 +79,5 @@ class Model extends CI_Model {
         $this->db->set('val4', $val4);
         $this->db->set('event_id', $event_id);
         $this->db->insert('former');
-    }
-
-    public function select_forms()
-    {
-        $this->db->select('forms.*');
-        $this->db->from('forms');
-        $this->db->order_by("forms.id", "DESC");
-        $query = $this->db->get();
-        return $query->result_array();
     }
 } 

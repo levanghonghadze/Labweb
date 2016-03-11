@@ -15,11 +15,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <ul class="top_nav">
 <div class="logo"><a href="<?php echo site_url('/'); ?>"><strong>Labweb</strong></a></div>
-<li><a href="<?php echo site_url('/'); ?>">მთავარი გვერდი</a></li>
-<li><a href="<?php echo site_url('about'); ?>">ჩვენს შესახებ</a></li>
-<li><a href="<?php echo site_url('events'); ?>">ივენთები</a></li>
-<li><a href="<?php echo site_url('speakers'); ?>">სპიკერები</a></li>
-<li><a href="<?php echo site_url('news'); ?>">სიახლეები</a></li>
+<li><a href="<?php echo site_url('/'); ?>"><?php echo $this->lang->line('homepage'); ?></a></li>
+<li><a href="<?php echo site_url('about'); ?>"><?php echo $this->lang->line('aboutus'); ?></a></li>
+<li><a href="<?php echo site_url('events'); ?>"><?php echo $this->lang->line('events'); ?></a></li>
+<li><a href="<?php echo site_url('speakers'); ?>"><?php echo $this->lang->line('speakers'); ?></a></li>
+<li><a href="<?php echo site_url('news'); ?>"><?php echo $this->lang->line('newss'); ?></a></li>
 <li style="float: right;"><a href="<?php echo site_url('/admin'); ?>">ADMIN</a></li>
 </ul>
 

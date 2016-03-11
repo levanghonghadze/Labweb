@@ -1,5 +1,5 @@
 <section class="main_events">
-	<div class="sec_title">ივენთები</div>
+	<div class="sec_title"><?php echo $this->lang->line('events'); ?></div>
 	<?php foreach ( $events as $e ) : ?>
 	<div class="event_form main_event_form">
 	<a href="<?php echo site_url('main/show_event/' . $e['id']) ?>">
@@ -22,8 +22,9 @@
 </section>
 
 <section class="main_mentors">
-	<div class="sec_title">სპიკერები
-		<a href="<?php echo site_url('mentors'); ?>"><i class="fa fa-external-link"></i> ყველა მენტორი</a>
+	<div class="sec_title">
+	<?php echo $this->lang->line('speakers'); ?>
+		<a href="<?php echo site_url('speakers'); ?>"><i class="fa fa-external-link"></i> <?php echo $this->lang->line('all') . ' ' . $this->lang->line('speaker'); ?></a>
 	</div>
 
 	<?php foreach ( $mentors as $m ) : ?>
@@ -36,13 +37,14 @@
 </section>
 
 <section class="main_news">
-	<div class="sec_title">სიახლეები
-		<a href="<?php echo site_url('blog'); ?>"><i class="fa fa-external-link"></i> ყველა სიახლე</a>
+	<div class="sec_title">
+	<?php echo $this->lang->line('newss'); ?>
+		<a href="<?php echo site_url('news'); ?>"><i class="fa fa-external-link"></i> <?php echo $this->lang->line('all') . ' ' . $this->lang->line('news'); ?></a>
 	</div>
 	
 <?php foreach ( $blogs as $b ) : ?>
 		<div class="news_form">
-			<a href=""><?php echo $b['title'] ?></a>
+			<a href="<?php echo site_url('main/show_news') . '/' . $b['id'] ?>"><?php echo $b['title'] ?></a>
 			<br/><span><?php echo $b['date'] ?></span>
 		</div><!-- /news_form -->
 <?php endforeach; ?>

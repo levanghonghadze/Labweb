@@ -6,6 +6,7 @@ class Admin extends CI_Controller {
         parent::__construct();
 
         $this->load->model('model');
+		$this->lang->load('ge', 'georgian');
         $this->load->model('Administrator');
 		$data['forms'] = $this->model->select_forms();
 		$data['labs'] = $this->model->select_labs();
@@ -37,14 +38,14 @@ class Admin extends CI_Controller {
 
 	public function check_event()
 	{
-        $this->form_validation->set_rules('event_name', 'ივენთის სახელის', 'required');
-        $this->form_validation->set_rules('event_start_date', 'დაწყების თარიღის', 'required');
-        $this->form_validation->set_rules('event_end_date', 'დასრულების თარიღის', 'required');
-        $this->form_validation->set_rules('event_location', 'ლოკაციის', 'required');
-        $this->form_validation->set_rules('event_overview', 'ივენთის შესახებ', 'required');
-        $this->form_validation->set_rules('forms', 'ფორმის', 'required');
-        $this->form_validation->set_rules('labs', 'ლაბი', 'required');
-        $this->form_validation->set_rules('agenda', 'განრიგის', 'required');
+        $this->form_validation->set_rules('event_name', 'lang:valid_event_name', 'required');
+        $this->form_validation->set_rules('event_start_date', 'lang:valid_start_date', 'required');
+        $this->form_validation->set_rules('event_end_date', 'lang:valid_end_date', 'required');
+        $this->form_validation->set_rules('event_location', 'lang:valid_event_location', 'required');
+        $this->form_validation->set_rules('event_overview', 'lang:valid_overview', 'required');
+        $this->form_validation->set_rules('forms', 'lang:valid_forms', 'required');
+        $this->form_validation->set_rules('labs', 'lang:valid_labs', 'required');
+        $this->form_validation->set_rules('agenda', 'lang:valid_agenda', 'required');
 
 		if ( $_SERVER['REQUEST_METHOD'] != 'POST' && !empty($_POST) ){
 			redirect('/main/index');
@@ -77,9 +78,9 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/theme/footer');
 	}
 	
-	public function add_blog()
+	public function add_news()
 	{
-		$this->load->view('admin/views/add_blog');
+		$this->load->view('admin/views/add_news');
 		$this->load->view('admin/theme/footer');
 	}
 
@@ -149,7 +150,7 @@ class Admin extends CI_Controller {
         $this->load->view('admin/theme/footer');
 	}
 	
-	public function edit_mentors($id)
+	public function edit_mentors($id = NULL)
 	{
 		$check_id = $this->db->select('id')->from('mentors')->where('id',$id)->get();
 
@@ -161,7 +162,7 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/views/edit_mentors', $data);
 		}else {
 	        $data['message'] = '<div class="updated"><i class="fa fa-info"></i> ასეთი მენტორი არ არსებობს ან წაშლილია.</div>';
-			$this->load->view('admin/message', $data);
+			$this->load->view('errors/message', $data);
 			$this->load->view('admin/theme/footer');
 		}
 	}
@@ -204,7 +205,7 @@ class Admin extends CI_Controller {
 		{
 			$error = array('error' => $this->upload->display_errors());
 
-			$this->load->view('admin/message', $error);
+			$this->load->view('errors/message', $error);
 		}
 		else
 		{
@@ -247,7 +248,6 @@ class Admin extends CI_Controller {
 
 	public function edit_events($id)
 	{
-
 		$this->load->view('admin/views/edit_events');
 		$this->load->view('admin/theme/footer');
 	}
@@ -257,14 +257,7 @@ class Admin extends CI_Controller {
 		$this->Administrator->remove_events($id);
         $data['message'] = '<div class="updated"><i class="fa fa-trash"></i> ივენთი წარმატებით წაიშალა.</div>';
 
-        $this->load->view('admin/message', $data);
-        $this->load->view('admin/theme/footer');
-	}
-
-	public function add_news()
-	{
-
-        $this->load->view('admin/views/add_news');
+        $this->load->view('errors/message', $data);
         $this->load->view('admin/theme/footer');
 	}
 
@@ -273,7 +266,7 @@ class Admin extends CI_Controller {
 		$this->Administrator->remove_forms($id);
         $data['message'] = '<div class="updated"><i class="fa fa-trash"></i> ფორმა წარმატებით წაიშალა.</div>';
 
-        $this->load->view('admin/message', $data);
+        $this->load->view('errors/message', $data);
         $this->load->view('admin/theme/footer');
 	}
 }

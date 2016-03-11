@@ -44,10 +44,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<li><a href="<?php echo site_url('admin/add_mentors'); ?>">მენტორის დამატება</a></li>
 				<li><a href="<?php echo site_url('admin/mentors'); ?>">მენტორების მართვა</a></li>
 			</ul>
-	  <li class="check_link"><a class="nav" href="#">ბლოგი</a></li>
+	  <li class="check_link"><a class="nav" href="#">სიახლეები</a></li>
 			<ul class="drop_ul">
-				<li><a href="">ბლოგის დამატება</a></li>
-				<li><a href="">ბლოგების მართვა</a></li>
+				<li><a href="<?php echo site_url('admin/add_news'); ?>">სიახლის დამატება</a></li>
+				<li><a href="<?php echo site_url('admin/news'); ?>">სიახლეების მართვა</a></li>
 			</ul>
 	 <li><a class="nav" href="<?php echo site_url('admin'); ?>">გასვლა</a></li>
 	</ul>

@@ -111,12 +111,12 @@ body, html {
 
 .event_form h1 {
     color: #fff;
-    font: bold 3.0vh 'arial';
+    font: bold 3.0vh 'bpg_arial_2009';
     padding: 3%;
 }
 
 .event_location {
-    font: 2.5vh 'arial';
+    font: 2.5vh 'bpg_arial_2009';
     padding-top: 10px;
     color: #666666;
 }

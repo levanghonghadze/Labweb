@@ -56,5 +56,5 @@ $route['404_override'] = '';
 $route['speakers'] = 'main/mentors';
 $route['events'] = 'main/events';
 $route['about'] = 'main/page/about_us';
-$route['news'] = 'main/blog';
+$route['news'] = 'main/news';
 $route['translate_uri_dashes'] = FALSE;

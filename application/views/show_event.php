@@ -3,13 +3,13 @@
 </style>
 
 <div class="shov_event_leftbar">
-<h1>განრიგი</h1>
+<h1><?php echo $this->lang->line('agenda'); ?></h1>
 <div class="agenda">
 	<p><?php echo nl2br($show_events['agenda']) ?></p>
 </div>
-<h1>ორაგნიზატორები</h1>
+<h1><?php echo $this->lang->line('organisers'); ?></h1>
 <img src="<?php echo base_url('uploads/' . $show_events['lab_photo']) ?>" alt="" />
-<h1>სიახლეები ივენთზე</h1>
+<h1><?php echo $this->lang->line('news') . ' ' . $this->lang->line('toevent'); ?></h1>
   <?php foreach ( $se_news as $n ) : ?>
   	<a href="<?php echo $n['id']; ?>" class="se_news"><?php echo $n['title']; ?></a>
   <?php endforeach; ?>
@@ -21,7 +21,7 @@
 </div>
 
 <div class="register_event">
-<button class="register_event_button" onclick="window.location.href='#openModal'">ივენთზე რეგისტრაცია</button>
+<button class="register_event_button" onclick="window.location.href='#openModal'"><?php echo $this->lang->line('toevent') . ' ' . $this->lang->line('registration'); ?></button>
 <div class="event_location"><i class="fa fa-map-marker"></i> <?php echo $show_events['location'] ?></div>
 <div class="event_date"><i class="fa fa-clock-o"></i> <?php echo $show_events['event_start_date'] ?></div>
 </div><!-- /register_event -->
@@ -40,14 +40,14 @@
 			<div class="popup_registration_form">
 			  	<form class="get_event_form" action="<?php echo site_url('main/get_event'); ?>" method="post">
 			  		<?php echo $show_events['form'] ?>
-            		<button class="register_event_button" style="margin-right: 0;" type="submit">რეგისტრაცია</button>
+            		<button class="register_event_button" style="margin-right: 0;" type="submit"><?php echo $this->lang->line('registration'); ?></button>
 			  	</form>
 			</div><!-- /popup_registration_form -->
 	    </div>
 	</div><!-- /modalDialog -->
 
 <section class="show_event_mentors">
-<h2>სპიკერები</h2>
+<h2><?php echo $this->lang->line('speakers'); ?></h2>
   <?php foreach ( $se_mentors as $m ) : ?>
   <div class="show_event_mentors_form">
     <div class="mentors_info"><span><?php echo $m['mentor_name']; ?></span></div>
@@ -64,16 +64,7 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 <div class="fb-comments" data-href="<?php echo base_url('main/show_blog') . '/' . $show_events['id'] ?>" data-width="100%" data-numposts="10"></div>
 </section>
-
-<!-- <div class="lab_info">
-<?php echo $events['lab_name'] ?>
-<?php echo $events['lab_photo'] ?>
-</div> -->
-
-
 </div><!-- /show_event -->
 
 
-
-
-  <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('assets/form/form-builder.min.css'); ?>">
+<link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('assets/form/form-builder.min.css'); ?>">
