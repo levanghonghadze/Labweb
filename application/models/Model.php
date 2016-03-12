@@ -21,23 +21,6 @@ class Model extends CI_Model {
         return $query->result_array();
     }
 
-    public function mentor_events($id){
-         $this->db->select('events.*,mentors.*,event_mentors.*');
-         $this->db->join('events', 'events.id = event_mentors.event_id');
-         $this->db->join('mentors', 'mentors.id = event_mentors.mentor_id');
-         $this->db->where('event_mentors.event_id', $id);
-         $query = $this->db->get('event_mentors');
-         return $query->result_array();
-    }
-
-    public function news_events($id){
-         $this->db->select('events.*, blog.*');
-         $this->db->join('events', 'events.id = blog.event_id');
-         $this->db->where('blog.event_id', $id);
-         $query = $this->db->get('blog');
-         return $query->result_array();
-    }
-
     public function select_blog()
     {
         $this->db->select('*');
@@ -64,20 +47,50 @@ class Model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    public function mentor_events($id){
+         $this->db->select('events.*,mentors.*,event_mentors.*');
+         $this->db->join('events', 'events.id = event_mentors.event_id');
+         $this->db->join('mentors', 'mentors.id = event_mentors.mentor_id');
+         $this->db->where('event_mentors.event_id', $id);
+         $query = $this->db->get('event_mentors');
+         return $query->result_array();
+    }
+
+    public function news_events($id){
+         $this->db->select('events.*, blog.*');
+         $this->db->join('events', 'events.id = blog.event_id');
+         $this->db->where('blog.event_id', $id);
+         $query = $this->db->get('blog');
+         return $query->result_array();
+    }
+
+    public function view_page($page_url)
+    {  
+        $this->db->select('*');
+        $this->db->from('pages');
+        $this->db->where('page_url', $page_url);
+        $pages = $this->db->get()->row_array();
+        return $pages;
+    }
     
-    public function get_event()
+    public function view_news($id)
     {
-        $val1 = $this->input->POST('val1');
-        $val2 = $this->input->POST('val2');
-        $val3 = $this->input->POST('val3');
-        $val4 = $this->input->POST('val4');
-        $event_id = $this->input->POST('event_id');
-        
-        $this->db->set('val1', $val1);
-        $this->db->set('val2', $val2);
-        $this->db->set('val3', $val3);
-        $this->db->set('val4', $val4);
-        $this->db->set('event_id', $event_id);
-        $this->db->insert('former');
+        $this->db->select('*');
+        $this->db->from('blog');
+        $this->db->where('blog.id', $id);
+        $news = $this->db->get()->row_array();
+        return $news;
+    }
+
+    public function view_event($id)
+    { 
+        $this->db->select('events.*, forms.*, labs.*');
+        $this->db->from('events');
+        $this->db->where('events.id', $id);
+        $this->db->join('forms', 'forms.id = events.form_id');
+        $this->db->join('labs', 'labs.id = events.lab_id');
+        $event = $this->db->get()->row_array();
+        return $event;
     }
 } 

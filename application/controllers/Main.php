@@ -24,11 +24,7 @@ class Main extends CI_Controller {
 	
 	public function page($page_url)
 	{
-        $this->db->select('*');
-        $this->db->from('pages');
-        $this->db->where('page_url', $page_url);
-        $pages = $this->db->get()->row_array();
-        $data['page'] = $pages;
+        $data['page'] = $this->model->view_page($page_url);
 
 		$this->load->view('page', $data);
 		$this->load->view('theme/footer');
@@ -44,11 +40,7 @@ class Main extends CI_Controller {
 	{
 		$check_id = $this->db->select('id')->from('blog')->where('id',$id)->get();
 
-        $this->db->select('*');
-        $this->db->from('blog');
-        $this->db->where('blog.id', $id);
-        $blog = $this->db->get()->row_array();
-        $data['show_blog'] = $blog;
+        $data['show_blog'] = $this->model->view_news($id);
 
         if ($check_id->num_rows() > 0 ) {
 		$this->load->view('show_blog', $data);
@@ -70,13 +62,7 @@ class Main extends CI_Controller {
 	{
 		$check_id = $this->db->select('id')->from('events')->where('id',$id)->get();
 
-        $this->db->select('events.*, forms.*, labs.*');
-        $this->db->from('events');
-        $this->db->where('events.id', $id);
-        $this->db->join('forms', 'forms.id = events.form_id');
-        $this->db->join('labs', 'labs.id = events.lab_id');
-        $event = $this->db->get()->row_array();
-        $data['show_events'] = $event;
+        $data['show_events'] = $this->model->view_event($id);
 		$data['se_mentors'] = $this->model->mentor_events($id);
 		$data['se_news'] = $this->model->news_events($id);
 
@@ -91,7 +77,6 @@ class Main extends CI_Controller {
 	
 	public function mentors()
 	{
-
 		$this->load->view('pages/mentors');
 		$this->load->view('theme/footer');
 	}

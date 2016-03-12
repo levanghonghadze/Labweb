@@ -23,6 +23,9 @@ $lang['registration'] = 'რეგისტრაცია';
 
 //errors and messages
 $lang['page_not_found'] = 'ასეთი გვერდი არ არსებობს ან წაშლილია ადმინისტრაიციის მიერ.';
+$lang['mentor_added'] = '<div class="updated"><i class="fa fa-check"></i> მენტორი წარმატებით დაემატა.</div>';
+$lang['mentor_deleted'] = '<div class="updated"><i class="fa fa-trash"></i> მენტორი წარმატებით წაიშალა.</div>';
+$lang['information_updated'] = '<div class="updated"><i class="fa fa-info"></i> ინფორმაცია წარმატებით შეიცვალა.</div>';
 
 //validations
 $lang['valid_event_name'] = 'ივენთის სახელის შევსება აუცილებელია';
@@ -33,3 +36,5 @@ $lang['valid_overview'] = 'ივენთის აღწერის შევ
 $lang['valid_forms'] = 'აირჩიეთ ივენთზე სარეგისტრაციო ფორმა';
 $lang['valid_labs'] = 'აირჩიეთ ორგანიზატორები';
 $lang['valid_agenda'] = 'შეავსეთ ივენთის განრიგი';
+$lang['valid_email'] = 'ელ-ფოსტის შევსება აუცილებელია';
+$lang['valid_password'] = 'პაროლის შევსება აუცილებელია';

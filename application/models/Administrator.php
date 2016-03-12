@@ -66,7 +66,6 @@ class Administrator extends CI_Model {
 
     public function check_mentor($image)
     {
-
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('admin/views/add_mentors');
         }else{
@@ -81,16 +80,11 @@ class Administrator extends CI_Model {
         if ($this->form_validation->run()) {
             $this->load->model('model');
             $data['mentors'] = $this->model->select_mentors();
-            $data['message'] = '<div class="updated"><i class="fa fa-check"></i> მენტორი წარმატებით დაემატა.</div>';
+            $data['message'] = $this->lang->line('mentor_added');
 
             $this->load->view('admin/mentors', $data);
             $this->load->view('admin/theme/footer');
         }
-    }
-
-    public function update_mentor($image)
-    {
-        
     }
 
     public function remove_events($id)
@@ -103,6 +97,19 @@ class Administrator extends CI_Model {
     {
         $this->db->where('id', $id);
         $this->db->delete('forms');
+    }
+
+    public function update_mentor($id, $image)
+    {     
+                $mentor_name = $this->input->POST('mentor_name');
+                $mentor_info = $this->input->POST('mentor_info');
+                // $image = $this->input->POST('photo');
+
+                $this->db->set('mentor_name', $mentor_name);
+                $this->db->set('info', $mentor_info);
+                $this->db->set('photo', $image);
+                $this->db->where('id', $id);
+                $this->db->update('mentors');
     }
 
 

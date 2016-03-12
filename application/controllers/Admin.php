@@ -4,16 +4,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Admin extends CI_Controller {
 	function __construct(){
         parent::__construct();
-
-        $this->load->model('model');
 		$this->lang->load('ge', 'georgian');
+        $this->load->model('model');
         $this->load->model('Administrator');
 		$data['forms'] = $this->model->select_forms();
 		$data['labs'] = $this->model->select_labs();
 		$data['mentors'] = $this->model->select_mentors();
 		$data['events'] = $this->model->select_events();
 		$data['forms'] = $this->model->select_forms();
-
 		$this->load->library('form_validation');
         $this->form_validation->set_error_delimiters('<div class="errors">', '</div>');
 		$this->load->view('admin/theme/header', $data);
@@ -86,8 +84,8 @@ class Admin extends CI_Controller {
 
 	public function login()
 	{
-        $this->form_validation->set_rules('username', 'ელ-ფოსტის', 'required');
-        $this->form_validation->set_rules('password', 'პაროლის', 'required');
+        $this->form_validation->set_rules('username', 'lang:valid_email', 'required');
+        $this->form_validation->set_rules('password', 'lang:valid_password', 'required');
 
 		if ($this->form_validation->run() === FALSE) {
 			$this->load->view('');
@@ -118,7 +116,6 @@ class Admin extends CI_Controller {
 	
 	public function add_forms()
 	{
-
 		$this->load->view('admin/views/add_forms');
 		$this->load->view('admin/theme/footer');
 	}
@@ -141,13 +138,18 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/theme/footer');
 	}
 	
-	public function remove_mentors($id)
+	public function remove_mentors($id = NULL)
 	{
-		$this->Administrator->remove_mentors($id);
-        $data['message'] = '<div class="updated"><i class="fa fa-trash"></i> მენტორი წარმატებით წაიშალა.</div>';
+		$check_id = $this->db->select('id')->from('mentors')->where('id',$id)->get();
 
-        $this->load->view('admin/message', $data);
-        $this->load->view('admin/theme/footer');
+		if ($check_id->num_rows() > 0 ){
+			$this->Administrator->remove_mentors($id);
+        	$data['message'] = $this->lang->line('mentor_deleted');
+    	} else {	
+    		$data['message'] = $this->lang->line('page_not_found');
+    	}
+    		$this->load->view('errors/message', $data);
+        	$this->load->view('admin/theme/footer');
 	}
 	
 	public function edit_mentors($id = NULL)
@@ -191,50 +193,48 @@ class Admin extends CI_Controller {
 		$this->Administrator->check_mentor($image);
 	}
 
-	public function update_mentors($id)
+	public function update_mentors($id = NULL)
 	{
-        $this->form_validation->set_rules('mentor_name', 'მენტორის სახელის', 'required');
-        $this->form_validation->set_rules('mentor_info', 'მენტორის ინფორმაციის', 'required');
+		$check_id = $this->db->select('id')->from('mentors')->where('id',$id)->get();
 
-        $config['upload_path'] = './uploads/';
-		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '9999';
-		$this->load->library('upload', $config);
+		if ($check_id->num_rows() > 0 ) {
 
-		if ( ! $this->upload->do_upload('photo'))
-		{
-			$error = array('error' => $this->upload->display_errors());
+        	$this->form_validation->set_rules('mentor_name', 'მენტორის სახელის', 'required');
+        	$this->form_validation->set_rules('mentor_info', 'მენტორის ინფორმაციის', 'required');
+ 
+            if ($this->form_validation->run() === FALSE) {
+				$this->Administrator->edit_mentors($id);
+        		$mentor = $this->db->get()->row_array();
+        		$data['mentors'] = $mentor;
+                $this->load->view('admin/views/edit_mentors', $data);
+            }   
+     else{
+        	$config['upload_path']          = './uploads/';
+	        $config['allowed_types']        = 'gif|jpg|png';
+	        $config['max_size']             = 9000;
+			$this->load->library('upload', $config);
+			$image = '';
 
-			$this->load->view('errors/message', $error);
+			 if ( ! $this->upload->do_upload('photo'))
+                {
+                        $error = array('error' => $this->upload->display_errors());
+                }
+                else
+                {
+                        $data = array('upload_data' => $this->upload->data());
+                        $image = $data['upload_data']['file_name'];
+                }
+
+				$this->Administrator->update_mentor($id, $image);
+
+				$data['message'] = $this->lang->line('information_updated');
+				$this->load->view('errors/message', $data);
+
 		}
-		else
-		{
-			$data = array('upload_data' => $this->upload->data());
 
-			$this->load->view('message', $data);
-		}
-
-		if ($this->form_validation->run() === FALSE) {
-			$this->load->view('admin/views/add_mentors');
-		}else{
-
-	    	$mentor_name = $this->input->POST('mentor_name');
-	    	$mentor_info = $this->input->POST('mentor_info');
-	    	$image = $this->input->POST('photo');
-
-			$this->db->set('mentor_name', $mentor_name);
-			$this->db->set('info', $mentor_info);
-            $this->db->set('photo', $image);
-			$this->db->where('id', $id);
-			$this->db->update('mentors');
-		}
-
-		if ($this->form_validation->run()){
-
-			$data['message'] = '<div class="updated"><i class="fa fa-refresh"></i> ინფორმაცია წარმატებით შეიცვალა.</div>';
-
-			$this->load->view('admin/mentors', $data);
-			$this->load->view('admin/theme/footer');
+		} else {
+			$data['message'] = $this->lang->line('page_not_found');
+			$this->load->view('errors/message', $data);
 		}
 	}
 

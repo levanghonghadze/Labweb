@@ -66,5 +66,4 @@
 </section>
 </div><!-- /show_event -->
 
-
 <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('assets/form/form-builder.min.css'); ?>">
