@@ -163,7 +163,7 @@ class Admin extends CI_Controller {
 
 		$this->load->view('admin/views/edit_mentors', $data);
 		}else {
-	        $data['message'] = '<div class="updated"><i class="fa fa-info"></i> ასეთი მენტორი არ არსებობს ან წაშლილია.</div>';
+	        $data['message'] = $this->lang->line('page_not_found');
 			$this->load->view('errors/message', $data);
 			$this->load->view('admin/theme/footer');
 		}
@@ -171,12 +171,15 @@ class Admin extends CI_Controller {
 
 	public function check_mentors()
 	{
-        $this->form_validation->set_rules('mentor_name', 'მენტორის სახელის', 'required');
-        $this->form_validation->set_rules('mentor_info', 'მენტორის ინფორმაციის', 'required');
+        $this->form_validation->set_rules('mentor_name', 'lang:valid_mentor_name', 'required');
+        $this->form_validation->set_rules('mentor_info', 'lang:valid_mentor_info', 'required');
 
 			$config['upload_path']          = './uploads/';
 	        $config['allowed_types']        = 'gif|jpg|png';
 	        $config['max_size']             = 9000;
+	        $config['remove_spaces'] = TRUE;
+
+
 			$this->load->library('upload', $config);
 			$image = '';
 
@@ -199,8 +202,8 @@ class Admin extends CI_Controller {
 
 		if ($check_id->num_rows() > 0 ) {
 
-        	$this->form_validation->set_rules('mentor_name', 'მენტორის სახელის', 'required');
-        	$this->form_validation->set_rules('mentor_info', 'მენტორის ინფორმაციის', 'required');
+        	$this->form_validation->set_rules('mentor_name', 'lang:valid_mentor_name', 'required');
+        	$this->form_validation->set_rules('mentor_info', 'lang:valid_mentor_info', 'required');
  
             if ($this->form_validation->run() === FALSE) {
 				$this->Administrator->edit_mentors($id);
@@ -246,25 +249,39 @@ class Admin extends CI_Controller {
         $this->db->insert('forms');
 	}
 
-	public function edit_events($id)
+	public function edit_events($id = NULL)
 	{
+		$check_id = $this->db->select('id')->from('events')->where('id',$id)->get();
+
+		if ($check_id->num_rows() > 0 ) {
 		$this->load->view('admin/views/edit_events');
+		} else {
+			$data['message'] = $this->lang->line('page_not_found');
+			$this->load->view('errors/message', $data);
+		}
 		$this->load->view('admin/theme/footer');
 	}
 
-	public function remove_events($id)
+	public function remove_events($id = NULL)
 	{
-		$this->Administrator->remove_events($id);
-        $data['message'] = '<div class="updated"><i class="fa fa-trash"></i> ივენთი წარმატებით წაიშალა.</div>';
+		$check_id = $this->db->select('id')->from('events')->where('id',$id)->get();
 
-        $this->load->view('errors/message', $data);
+		if ($check_id->num_rows() > 0 ) {
+			$this->Administrator->remove_events($id);
+        	$data['message'] = $this->lang->line('event_removed');
+        	$this->load->view('errors/message', $data);
+		} else {
+			$data['message'] = $this->lang->line('page_not_found');
+			$this->load->view('errors/message', $data);
+    	}
+
         $this->load->view('admin/theme/footer');
 	}
 
 	public function remove_forms($id)
 	{
 		$this->Administrator->remove_forms($id);
-        $data['message'] = '<div class="updated"><i class="fa fa-trash"></i> ფორმა წარმატებით წაიშალა.</div>';
+        $data['message'] = $this->lang->line('form_removed');
 
         $this->load->view('errors/message', $data);
         $this->load->view('admin/theme/footer');
