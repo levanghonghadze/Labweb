@@ -17,10 +17,12 @@ var selectHandler = function(){
 	var _html = '<span>'+ text + '</span><div class="remove-selected-mentor">X</div>';
 	var fullElement = ApendEl.append(_html);
 	$(this).before(fullElement);
-	$("#mentorSelect option").eq(defId).remove();
+	$("#mentorSelect option").eq(defId).css('display','none');
+
 
 	$('.remove-selected-mentor').on('click', function(){
 		 $(this).parent().remove();
+		 $("#mentorSelect option").eq(defId).css('display','block');
 	});
 };
 
