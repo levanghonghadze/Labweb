@@ -389,3 +389,17 @@ html, body {
 	font-size: 80px;
 	color: #b0b0b0;
 }
+
+.selected-mentor {
+	background: #ccc;
+	color: #fff;
+	display: inline-block;
+	padding: 10px;
+}
+
+.remove-selected-mentor {
+	float: right;
+	color: red;
+	margin-left: 20px;
+	cursor: pointer;
+}

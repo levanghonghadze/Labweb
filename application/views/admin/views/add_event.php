@@ -32,14 +32,14 @@
 	  <?php echo form_error('labs'); ?></div>
 	  <!--/select-->
 
-					  <!-- <div class="form_val">
-					  <select name="labs">
-					  	<option value="">აირჩიეთ მენტორი</option>
+					  <div class="form_val">
+					  <select id="mentorSelect" name="labs" value="აირჩიეთ მენტორი">
+					  	<option selected="selected" value="">აირჩიეთ მენტორი</option>
 						<?php foreach ( $mentors as $m ) : ?>
 					  		<option value="<?php echo $m['id'] ?>"><?php echo $m['mentor_name'] ?></option>
 						<?php endforeach; ?>
 					  </select>
-					  <?php echo form_error('mentors'); ?></div> -->
+					  <?php echo form_error('mentors'); ?></div>
 
 	  <div class="form_val"><textarea rows="6" type="text" name="agenda" placeholder="მაგ: 
 11:45-12:00
