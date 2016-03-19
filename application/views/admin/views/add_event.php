@@ -33,9 +33,9 @@
 	  <!--/select-->
 
 					  <div class="form_val">
-					  <input type="hidden" name="ment_ids[]"></input>
+					  <input id="hidenIds" type="hidden" name="ment_ids[]"></input>
 					  <select id="mentorSelect" name="labs" value="აირჩიეთ მენტორი">
-					  	<option selected="selected" value="">აირჩიეთ მენტორი</option>
+					  	<option selected disabled value="">აირჩიეთ მენტორი</option>
 						<?php foreach ( $mentors as $m ) : ?>
 					  		<option value="<?php echo $m['id'] ?>"><?php echo $m['mentor_name'] ?></option>
 						<?php endforeach; ?>

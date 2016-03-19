@@ -18,7 +18,7 @@ var selectHandler = function(){
 	var fullElement = ApendEl.append(_html);
 	$(this).before(fullElement);
 	$("#mentorSelect option").eq(defId).css('display','none');
-
+	$('#hidenIds').append(id);
 
 	$('.remove-selected-mentor').on('click', function(){
 		 $(this).parent().remove();
