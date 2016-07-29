@@ -1,1 +1,0 @@
-<?php if(!empty($myerror)) echo $myerror;?>
